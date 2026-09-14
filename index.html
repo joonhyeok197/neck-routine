@@ -468,6 +468,76 @@
 
   <!-- Script block with full interactivity -->
   <script>
+    // 운동별 상세 가이드 데이터
+    const routineGuides = {
+      1: {
+        title: "벽 턱 당기기 (Wall Chin-Tuck)",
+        target: "경추 심부굴곡근 강화 및 일자목 전만 복원",
+        steps: [
+          "벽을 등지고 서서 뒤통수, 등, 엉덩이를 가볍게 벽에 밀착합니다.",
+          "시선은 정면 수평을 유지한 채 검지손가락으로 턱 끝을 가볍게 뒤로 밀어 넣습니다.",
+          "뒤통수로 벽을 지그시 누르는 느낌으로 목 뒤쪽이 길어지게 5초간 유지합니다.",
+          "턱이 아래로 숙여지지 않고 '이중턱'을 만들듯 수평으로 들어가는 것이 핵심입니다."
+        ],
+        caution: "고개를 숙이지 마세요. 목 뒤 척추뼈가 위아래로 길게 펴지는 느낌이어야 합니다."
+      },
+      2: {
+        title: "W자 팔 벌리기 & 가슴 개방",
+        target: "단축된 흉근 이완 및 흉추 신전각도 회복",
+        steps: [
+          "선 자세에서 양팔을 들어 영문 'W'자 모양을 만듭니다.",
+          "팔꿈치를 옆구리 쪽으로 지그시 내리며 양쪽 날개뼈(견갑골)를 가운데로 쪼여줍니다.",
+          "가슴 앞쪽을 시원하게 열어준 상태로 5초간 유지하며 호흡합니다.",
+          "날개뼈 아래쪽 근육이 수축되는 자극에 집중합니다."
+        ],
+        caution: "허리를 꺾어서 젖히지 말고 가슴뼈(흉골)를 천장 대각선 방향으로 들어 올리세요."
+      },
+      3: {
+        title: "맥켄지 경추 신전운동 (McKenzie Extension)",
+        target: "디스크 내부 압력 감압 및 경추 C자 커브 회복",
+        steps: [
+          "바른 자세로 앉아 먼저 턱을 뒤로 수평으로 쑥 당깁니다 (Chin-Tuck 선행 필수).",
+          "턱이 당겨진 상태를 유지하며 천천히 고개를 뒤로 젖혀 천장을 바라봅니다.",
+          "가장 시원하게 젖혀진 끝 범위에서 코로 숨을 깊게 들이쉬고 내쉬며 6초간 유지합니다.",
+          "올라올 때도 급하게 튕기지 말고 천천히 턱을 유지한 채 정면으로 돌아옵니다."
+        ],
+        caution: "턱을 앞으로 뺀 상태에서 목만 뒤로 꺾으면 관절이 손상됩니다. 손끝 저림 발생 시 즉시 멈추세요."
+      },
+      4: {
+        title: "의자 등받이 흉추 신전",
+        target: "굳어진 흉추 유연성 증진 및 굽은 등 교정",
+        steps: [
+          "의자 깊숙이 앉아 엉덩이를 밀착하고 날개뼈 바로 아래에 등받이를 댑니다.",
+          "양손 깍지를 껴 목과 뒤통수를 단단히 감싸 경추를 보호합니다.",
+          "숨을 천천히 내쉬며 등받이를 축으로 가슴을 활짝 펴 뒤로 천천히 기대어 젖힙니다.",
+          "가슴 전체가 늘어나는 시원한 느낌으로 7초간 유지 후 제자리로 돌아옵니다."
+        ],
+        caution: "목만 꺾이지 않도록 양손으로 머리를 안정적으로 받쳐주고 허리가 들리지 않게 복부에 가볍게 힘을 줍니다."
+      },
+      5: {
+        title: "후두하근 폼롤러 도리도리 이완",
+        target: "만성 두통 및 목덜미 뻐근함 유발 근육 이완",
+        steps: [
+          "바닥에 누워 뒤통수 바로 아래, 머리와 목이 연결되는 오목한 부위에 폼롤러를 벱니다.",
+          "손으로 폼롤러 양쪽을 잡아 고정한 뒤 온몸의 긴장을 풉니다.",
+          "고개를 좌우로 천천히 도리도리 돌리며 뭉친 후두하근 라인을 부드럽게 지압합니다.",
+          "유독 뻐근한 포인트가 있다면 2~3초 머물며 심호흡합니다."
+        ],
+        caution: "목뼈 자체를 누르는 것이 아니라 뒤통수 뼈 바로 아래 근육 결을 문지르는 느낌이어야 합니다."
+      },
+      6: {
+        title: "엎드려서 Y-T 레이즈",
+        target: "하부 승모근 및 견갑골 안정화 근육 강화",
+        steps: [
+          "매트에 엎드려 이마를 바닥에 살짝 대고 턱을 가볍게 당겨 목 뒤를 정렬합니다.",
+          "양팔을 'Y'자 모양으로 벌리고 엄지손가락이 천장을 향하도록 세웁니다.",
+          "날개뼈를 아래·가운데로 끌어내리며 양팔을 바닥에서 3~5cm 지그시 들어 올립니다.",
+          "최고 지점에서 날개뼈의 수축을 느끼며 4초간 버틴 후 천천히 내립니다."
+        ],
+        caution: "목이나 어깨 상부 승모근을 으쓱하지 말고, 날개뼈 아래쪽 근육으로만 들어 올려야 합니다."
+      }
+    };
+
     /* Audio Tone Synthesizer for Timers (No external dependencies) */
     class SoundFX {
       constructor() {
@@ -476,12 +546,15 @@
       init() {
         if (!this.ctx) {
           const AudioContext = window.AudioContext || window.webkitAudioContext;
-          this.ctx = new AudioContext();
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
         }
       }
       beep(freq = 600, duration = 0.15) {
         try {
           this.init();
+          if (!this.ctx) return;
           if (this.ctx.state === 'suspended') {
             this.ctx.resume();
           }
@@ -489,21 +562,19 @@
           const gain = this.ctx.createGain();
           osc.type = 'sine';
           osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
           osc.start();
           osc.stop(this.ctx.currentTime + duration);
-        } catch (e) {
-          // Audio autoplay block fallback
-        }
+        } catch (e) {}
       }
       completedChime() {
         try {
-          this.beep(523.25, 0.12); // C5
-          setTimeout(() => this.beep(659.25, 0.12), 120); // E5
-          setTimeout(() => this.beep(783.99, 0.25), 240); // G5
+          this.beep(523.25, 0.12);
+          setTimeout(() => this.beep(659.25, 0.12), 120);
+          setTimeout(() => this.beep(783.99, 0.25), 240);
         } catch (e) {}
       }
     }
@@ -521,7 +592,7 @@
       get(name) {
         try {
           const cname = encodeURIComponent(name) + "=";
-          const decodedCookie = decodeURIComponent(document.cookie);
+          const decodedCookie = decodeURIComponent(document.cookie || '');
           const ca = decodedCookie.split(';');
           for (let i = 0; i < ca.length; i++) {
             let c = ca[i].trim();
@@ -540,11 +611,7 @@
 
     const completedItems = new Set();
     const totalItems = 6;
-    // Afternoon routine items (3, 4) require minimum 3 sessions per day
-    const sessionFreq = {
-      3: 0,
-      4: 0
-    };
+    const sessionFreq = { 3: 0, 4: 0 };
     const REQUIRED_AFTERNOON_SESSIONS = 3;
 
     function saveStateToCookie() {
@@ -563,22 +630,21 @@
       try {
         const stateObj = JSON.parse(raw);
         const today = CookieStorage.getTodayStr();
-        // If it's a new day, auto reset
         if (stateObj.date !== today) {
           saveStateToCookie();
           return;
         }
 
         if (stateObj.freq) {
-          sessionFreq[3] = stateObj.freq[3] || 0;
-          sessionFreq[4] = stateObj.freq[4] || 0;
+          sessionFreq[3] = Number(stateObj.freq[3]) || 0;
+          sessionFreq[4] = Number(stateObj.freq[4]) || 0;
           updateFreqBadge(3);
           updateFreqBadge(4);
         }
 
         if (Array.isArray(stateObj.completed)) {
           stateObj.completed.forEach(id => {
-            applyCardCompleteState(id, true);
+            applyCardCompleteState(Number(id), true);
           });
           updateProgress();
         }
@@ -626,17 +692,43 @@
 
     function updateProgress() {
       const percentage = Math.round((completedItems.size / totalItems) * 100);
-      document.getElementById('progress-percentage').innerText = `${percentage}%`;
-      document.getElementById('top-progress-bar').style.width = `${percentage}%`;
+      const label = document.getElementById('progress-percentage');
+      const bar = document.getElementById('top-progress-bar');
+      if (label) label.innerText = `${percentage}%`;
+      if (bar) bar.style.width = `${percentage}%`;
 
       if (completedItems.size === totalItems && totalItems > 0) {
         sound.completedChime();
       }
     }
 
+    /* Tab Filter Logic */
+    function switchTab(category) {
+      sound.beep(500, 0.05);
+      const tabs = ['all', 'morning', 'afternoon', 'evening'];
+      tabs.forEach(tab => {
+        const btn = document.getElementById(`tab-${tab}`);
+        if (!btn) return;
+        if (tab === category) {
+          btn.className = "tab-btn snap-start px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all duration-150 bg-slate-900 text-white shadow-sm active:scale-95";
+        } else {
+          btn.className = "tab-btn snap-start px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-150 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 active:scale-95";
+        }
+      });
+
+      const cards = document.querySelectorAll('.routine-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
     // Timer Phases: 'READY' (3s) -> 'HOLD' (Exercise Duration) -> 'REST' (Rest Duration between reps)
     let timerInterval = null;
-    let timerPhase = 'READY'; // 'READY' | 'HOLD' | 'REST'
+    let timerPhase = 'READY';
     let timerSecLeft = 0;
     let timerHoldSec = 5;
     let timerRestSec = 3;
@@ -657,15 +749,19 @@
       timerCurrentRep = 1;
       timerIsPaused = false;
 
-      document.getElementById('timer-title').innerText = title;
-      document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
-      document.getElementById('timer-pause-btn').innerText = "일시정지";
+      const titleEl = document.getElementById('timer-title');
+      const repsEl = document.getElementById('timer-reps');
+      const pauseBtn = document.getElementById('timer-pause-btn');
+      if (titleEl) titleEl.innerText = title;
+      if (repsEl) repsEl.innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
+      if (pauseBtn) pauseBtn.innerText = "일시정지";
       
       const modal = document.getElementById('timer-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
 
-      // Start with 3 seconds Ready Phase
       setTimerPhase('READY', 3);
       clearInterval(timerInterval);
       runTimerLoop();
@@ -682,25 +778,31 @@
       const desktopCircle = document.getElementById('timer-circle-bar');
 
       if (phase === 'READY') {
-        badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-300";
-        badge.innerText = "⏳ 3초 준비";
-        phaseLabel.innerText = "준비 카운트다운";
-        instruction.innerText = "바른 자세를 취하고 턱을 살짝 당겨 준비하세요";
-        if (mobileCircle) mobileCircle.style.stroke = "#f59e0b"; // amber
+        if (badge) {
+          badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-300";
+          badge.innerText = "⏳ 3초 준비";
+        }
+        if (phaseLabel) phaseLabel.innerText = "준비 카운트다운";
+        if (instruction) instruction.innerText = "바른 자세를 취하고 턱을 살짝 당겨 준비하세요";
+        if (mobileCircle) mobileCircle.style.stroke = "#f59e0b";
         if (desktopCircle) desktopCircle.style.stroke = "#f59e0b";
       } else if (phase === 'HOLD') {
-        badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 animate-pulse";
-        badge.innerText = `🔥 동작 수행 (${timerCurrentRep}/${timerTotalReps}회)`;
-        phaseLabel.innerText = "자세 유지 중";
-        instruction.innerText = "턱을 당긴 상태를 유지하며 천천히 호흡하세요";
-        if (mobileCircle) mobileCircle.style.stroke = "#10b981"; // emerald
+        if (badge) {
+          badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 animate-pulse";
+          badge.innerText = `🔥 동작 수행 (${timerCurrentRep}/${timerTotalReps}회)`;
+        }
+        if (phaseLabel) phaseLabel.innerText = "자세 유지 중";
+        if (instruction) instruction.innerText = "턱을 당긴 상태를 유지하며 천천히 호흡하세요";
+        if (mobileCircle) mobileCircle.style.stroke = "#10b981";
         if (desktopCircle) desktopCircle.style.stroke = "#10b981";
       } else if (phase === 'REST') {
-        badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-300";
-        badge.innerText = "☕ 휴식 및 호흡";
-        phaseLabel.innerText = "휴식 / 다음 반복 준비";
-        instruction.innerText = "긴장을 풀고 코로 천천히 숨을 내쉬세요";
-        if (mobileCircle) mobileCircle.style.stroke = "#0ea5e9"; // sky
+        if (badge) {
+          badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-300";
+          badge.innerText = "☕ 휴식 및 호흡";
+        }
+        if (phaseLabel) phaseLabel.innerText = "휴식 / 다음 반복 준비";
+        if (instruction) instruction.innerText = "긴장을 풀고 코로 천천히 숨을 내쉬세요";
+        if (mobileCircle) mobileCircle.style.stroke = "#0ea5e9";
         if (desktopCircle) desktopCircle.style.stroke = "#0ea5e9";
       }
 
@@ -713,29 +815,25 @@
           timerSecLeft--;
 
           if (timerSecLeft <= 0) {
-            // Phase Transitions
             if (timerPhase === 'READY') {
-              sound.beep(880, 0.2); // Start exercise tone
+              sound.beep(880, 0.2);
               setTimerPhase('HOLD', timerHoldSec);
             } else if (timerPhase === 'HOLD') {
-              sound.beep(650, 0.15); // Rep end tone
+              sound.beep(650, 0.15);
               if (timerCurrentRep < timerTotalReps) {
-                // Go to REST before next rep
                 setTimerPhase('REST', timerRestSec);
               } else {
-                // Entire set finished!
                 handleWorkoutComplete();
                 return;
               }
             } else if (timerPhase === 'REST') {
-              // Finish rest, start next rep
               timerCurrentRep++;
-              document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
+              const repsEl = document.getElementById('timer-reps');
+              if (repsEl) repsEl.innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
               sound.beep(880, 0.2);
               setTimerPhase('HOLD', timerHoldSec);
             }
           } else {
-            // Tick sounds
             if (timerPhase === 'READY') {
               sound.beep(520, 0.06);
             } else {
@@ -752,17 +850,14 @@
       sound.completedChime();
       closeTimerModal();
 
-      // If it's an afternoon frequent exercise (3 or 4)
       if (activeExerciseId === 3 || activeExerciseId === 4) {
         sessionFreq[activeExerciseId] = (sessionFreq[activeExerciseId] || 0) + 1;
         updateFreqBadge(activeExerciseId);
         
-        // Auto check if minimum 3 sessions completed
         if (sessionFreq[activeExerciseId] >= REQUIRED_AFTERNOON_SESSIONS) {
           applyCardCompleteState(activeExerciseId, true);
         }
       } else {
-        // Normal routines automatically complete on single full timer finish
         applyCardCompleteState(activeExerciseId, true);
       }
 
@@ -771,10 +866,11 @@
     }
 
     function updateTimerDisplay() {
-      document.getElementById('timer-countdown').innerText = timerSecLeft;
+      const countEl = document.getElementById('timer-countdown');
+      if (countEl) countEl.innerText = timerSecLeft;
       
       const totalForPhase = timerPhase === 'READY' ? 3 : (timerPhase === 'HOLD' ? timerHoldSec : timerRestSec);
-      const ratio = timerSecLeft / totalForPhase;
+      const ratio = totalForPhase > 0 ? (timerSecLeft / totalForPhase) : 0;
 
       const circleDesktop = document.getElementById('timer-circle-bar');
       if (circleDesktop) {
@@ -791,7 +887,8 @@
 
     function toggleTimerPause() {
       timerIsPaused = !timerIsPaused;
-      document.getElementById('timer-pause-btn').innerText = timerIsPaused ? "계속하기" : "일시정지";
+      const pauseBtn = document.getElementById('timer-pause-btn');
+      if (pauseBtn) pauseBtn.innerText = timerIsPaused ? "계속하기" : "일시정지";
     }
 
     function skipTimerSet() {
@@ -805,7 +902,8 @@
         }
       } else if (timerPhase === 'REST') {
         timerCurrentRep++;
-        document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
+        const repsEl = document.getElementById('timer-reps');
+        if (repsEl) repsEl.innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
         setTimerPhase('HOLD', timerHoldSec);
       }
     }
@@ -813,171 +911,10 @@
     function closeTimerModal() {
       clearInterval(timerInterval);
       const modal = document.getElementById('timer-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    window.onload = function() {
-      loadStateFromCookie();
-    };
-
-    const completedItems = new Set();
-    const totalItems = 6;
-
-    function toggleComplete(id) {
-      sound.beep(800, 0.08);
-      const card = document.getElementById(`card-${id}`);
-      const btn = document.getElementById(`check-btn-${id}`);
-      
-      if (completedItems.has(id)) {
-        completedItems.delete(id);
-        card.classList.remove('bg-emerald-50/50', 'border-emerald-300');
-        btn.classList.remove('bg-emerald-500', 'border-emerald-500');
-        btn.innerHTML = `<svg class="w-4 h-4 text-white hidden group-hover:block transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>`;
-      } else {
-        completedItems.add(id);
-        card.classList.add('bg-emerald-50/50', 'border-emerald-300');
-        btn.classList.add('bg-emerald-500', 'border-emerald-500');
-        btn.innerHTML = `<svg class="w-4 h-4 text-white block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>`;
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
       }
-      updateProgress();
-    }
-
-    function updateProgress() {
-      const percentage = Math.round((completedItems.size / totalItems) * 100);
-      document.getElementById('progress-percentage').innerText = `${percentage}%`;
-      document.getElementById('top-progress-bar').style.width = `${percentage}%`;
-
-      if (completedItems.size === totalItems) {
-        sound.completedChime();
-      }
-    }
-
-    /* Tab Filter Logic */
-    function switchTab(category) {
-      sound.beep(500, 0.05);
-      const tabs = ['all', 'morning', 'afternoon', 'evening'];
-      tabs.forEach(tab => {
-        const btn = document.getElementById(`tab-${tab}`);
-        if (tab === category) {
-          btn.className = "tab-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-slate-900 text-white shadow-sm";
-        } else {
-          btn.className = "tab-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200";
-        }
-      });
-
-      const cards = document.querySelectorAll('.routine-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-
-    let timerInterval = null;
-    let timerSecLeft = 0;
-    let timerTotalSec = 0;
-    let timerCurrentRep = 1;
-    let timerTotalReps = 1;
-    let timerIsPaused = false;
-    let activeExerciseId = null;
-
-    const circumferenceDesktop = 2 * Math.PI * 76; // 477.52
-    const circumferenceMobile = 2 * Math.PI * 70;  // 439.82
-
-    function startTimer(id, title, durationPerRep, totalReps) {
-      sound.beep(600, 0.1);
-      activeExerciseId = id;
-      timerTotalSec = durationPerRep;
-      timerSecLeft = durationPerRep;
-      timerTotalReps = totalReps;
-      timerCurrentRep = 1;
-      timerIsPaused = false;
-
-      document.getElementById('timer-title').innerText = title;
-      document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
-      document.getElementById('timer-pause-btn').innerText = "일시정지";
-      
-      const modal = document.getElementById('timer-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-
-      updateTimerDisplay();
-      clearInterval(timerInterval);
-      runTimerLoop();
-    }
-
-    function runTimerLoop() {
-      timerInterval = setInterval(() => {
-        if (!timerIsPaused) {
-          timerSecLeft--;
-          if (timerSecLeft <= 0) {
-            sound.beep(880, 0.18);
-            if (timerCurrentRep < timerTotalReps) {
-              timerCurrentRep++;
-              timerSecLeft = timerTotalSec;
-              document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
-            } else {
-              // Routine item complete
-              clearInterval(timerInterval);
-              sound.completedChime();
-              closeTimerModal();
-              if (!completedItems.has(activeExerciseId)) {
-                toggleComplete(activeExerciseId);
-              }
-              return;
-            }
-          } else {
-            sound.beep(440, 0.04);
-          }
-          updateTimerDisplay();
-        }
-      }, 1000);
-    }
-
-    function updateTimerDisplay() {
-      document.getElementById('timer-countdown').innerText = timerSecLeft;
-      
-      const circleDesktop = document.getElementById('timer-circle-bar');
-      if (circleDesktop) {
-        const offsetDesktop = circumferenceDesktop - (timerSecLeft / timerTotalSec) * circumferenceDesktop;
-        circleDesktop.style.strokeDashoffset = offsetDesktop;
-      }
-
-      const circleMobile = document.getElementById('timer-circle-bar-mobile');
-      if (circleMobile) {
-        const offsetMobile = circumferenceMobile - (timerSecLeft / timerTotalSec) * circumferenceMobile;
-        circleMobile.style.strokeDashoffset = offsetMobile;
-      }
-    }
-
-    function toggleTimerPause() {
-      timerIsPaused = !timerIsPaused;
-      document.getElementById('timer-pause-btn').innerText = timerIsPaused ? "계속하기" : "일시정지";
-    }
-
-    function skipTimerSet() {
-      if (timerCurrentRep < timerTotalReps) {
-        timerCurrentRep++;
-        timerSecLeft = timerTotalSec;
-        document.getElementById('timer-reps').innerText = `${timerCurrentRep} / ${timerTotalReps} 회`;
-        updateTimerDisplay();
-      } else {
-        clearInterval(timerInterval);
-        closeTimerModal();
-        if (!completedItems.has(activeExerciseId)) {
-          toggleComplete(activeExerciseId);
-        }
-      }
-    }
-
-    function closeTimerModal() {
-      clearInterval(timerInterval);
-      const modal = document.getElementById('timer-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
     }
 
     function openGuideModal(id) {
@@ -992,33 +929,45 @@
         </li>
       `).join('');
 
-      document.getElementById('guide-modal-content').innerHTML = `
-        <span class="inline-block px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold mb-2">동작 가이드</span>
-        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-1.5">${data.title}</h3>
-        <p class="text-xs font-medium text-emerald-800 bg-emerald-50/80 p-2.5 rounded-xl mb-4 border border-emerald-100">
-          🎯 효과: ${data.target}
-        </p>
-        <div class="space-y-2.5 mb-4">
-          <h4 class="text-xs sm:text-sm font-bold text-slate-900">수행 방법:</h4>
-          <ul class="space-y-2">
-            ${stepsHtml}
-          </ul>
-        </div>
-        <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-xs text-rose-800">
-          <strong>⚠️ 주의사항:</strong> ${data.caution}
-        </div>
-      `;
+      const contentEl = document.getElementById('guide-modal-content');
+      if (contentEl) {
+        contentEl.innerHTML = `
+          <span class="inline-block px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold mb-2">동작 가이드</span>
+          <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-1.5">${data.title}</h3>
+          <p class="text-xs font-medium text-emerald-800 bg-emerald-50/80 p-2.5 rounded-xl mb-4 border border-emerald-100">
+            🎯 효과: ${data.target}
+          </p>
+          <div class="space-y-2.5 mb-4">
+            <h4 class="text-xs sm:text-sm font-bold text-slate-900">수행 방법:</h4>
+            <ul class="space-y-2">
+              ${stepsHtml}
+            </ul>
+          </div>
+          <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-xs text-rose-800">
+            <strong>⚠️ 주의사항:</strong> ${data.caution}
+          </div>
+        `;
+      }
 
       const modal = document.getElementById('guide-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
     }
 
     function closeGuideModal() {
       const modal = document.getElementById('guide-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
     }
+
+    // 초기화 실행
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStateFromCookie();
+    });
   </script>
 </body>
 </html>
