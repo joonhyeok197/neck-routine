@@ -24,28 +24,136 @@
       background-color: #cbd5e1;
       border-radius: 9999px;
     }
-    /* 일러스트 내부 부드러운 모션 애니메이션 */
+    /* 고디테일 관절 & 근육 모션 키프레임 애니메이션 */
     @keyframes pulse-ring {
-      0% { transform: scale(0.85); opacity: 0.8; }
-      50% { transform: scale(1.15); opacity: 0.3; }
-      100% { transform: scale(0.85); opacity: 0.8; }
+      0% { transform: scale(0.8); opacity: 0.9; }
+      50% { transform: scale(1.35); opacity: 0.2; }
+      100% { transform: scale(0.8); opacity: 0.9; }
     }
-    @keyframes slide-left {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(-8px); }
+    @keyframes rub-circle {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(3px, -3px); }
+      50% { transform: translate(6px, 0); }
+      75% { transform: translate(3px, 3px); }
+      100% { transform: translate(0, 0); }
     }
-    @keyframes float-up-down {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+    @keyframes chin-tuck-glide {
+      0%, 15% { transform: translateX(14px); }
+      45%, 80% { transform: translateX(-6px); }
+      100% { transform: translateX(14px); }
     }
-    @keyframes breathe-belly {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
+    @keyframes spine-straighten {
+      0%, 15% { d: path("M125 170 Q138 135 152 98"); }
+      45%, 80% { d: path("M125 170 Q126 135 128 98"); }
+      100% { d: path("M125 170 Q138 135 152 98"); }
     }
-    .anim-pulse { animation: pulse-ring 2.2s infinite ease-in-out; transform-origin: center; }
-    .anim-slide-left { animation: slide-left 2.5s infinite ease-in-out; }
-    .anim-float { animation: float-up-down 2.5s infinite ease-in-out; }
-    .anim-breathe { animation: breathe-belly 3.5s infinite ease-in-out; transform-origin: center; }
+    @keyframes elbow-orbit-left {
+      0% { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+      100% { transform: rotate(-360deg) translateX(8px) rotate(360deg); }
+    }
+    @keyframes elbow-orbit-right {
+      0% { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
+    }
+    @keyframes chest-open-lean {
+      0%, 15% { transform: translateX(0) rotate(0deg); }
+      50%, 80% { transform: translateX(10px) rotate(4deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    @keyframes pec-stretch-glow {
+      0%, 15% { opacity: 0.15; transform: scale(0.9); }
+      50%, 80% { opacity: 0.75; transform: scale(1.15); }
+      100% { opacity: 0.15; transform: scale(0.9); }
+    }
+    @keyframes tw-arm-left {
+      0%, 20% { d: path("M118 96 L82 96 L48 96"); }
+      50%, 85% { d: path("M118 96 L96 124 L74 88"); }
+      100% { d: path("M118 96 L82 96 L48 96"); }
+    }
+    @keyframes tw-arm-right {
+      0%, 20% { d: path("M162 96 L198 96 L232 96"); }
+      50%, 85% { d: path("M162 96 L184 124 L206 88"); }
+      100% { d: path("M162 96 L198 96 L232 96"); }
+    }
+    @keyframes scapula-down {
+      0%, 20% { transform: translateY(0); }
+      50%, 85% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes chair-decompression {
+      0%, 20% { transform: translateY(0); }
+      50%, 85% { transform: translateY(-9px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes cat-spine-arch {
+      0%, 20% { d: path("M88 122 Q140 122 192 122"); }
+      50%, 80% { d: path("M88 122 Q140 74 192 122"); }
+      100% { d: path("M88 122 Q140 122 192 122"); }
+    }
+    @keyframes cat-head-nod {
+      0%, 20% { transform: rotate(0deg) translateY(0); }
+      50%, 80% { transform: rotate(22deg) translateY(8px); }
+      100% { transform: rotate(0deg) translateY(0); }
+    }
+    @keyframes wall-angel-left {
+      0%, 15% { d: path("M122 106 L88 134 L70 95"); }
+      50%, 80% { d: path("M122 106 L84 82 L66 44"); }
+      100% { d: path("M122 106 L88 134 L70 95"); }
+    }
+    @keyframes wall-angel-right {
+      0%, 15% { d: path("M158 106 L192 134 L210 95"); }
+      50%, 80% { d: path("M158 106 L196 82 L214 44"); }
+      100% { d: path("M158 106 L192 134 L210 95"); }
+    }
+    @keyframes birddog-arm-reach {
+      0%, 15% { d: path("M102 114 L98 168"); }
+      45%, 80% { d: path("M102 114 L34 114"); }
+      100% { d: path("M102 114 L98 168"); }
+    }
+    @keyframes birddog-leg-reach {
+      0%, 15% { d: path("M172 114 L176 168"); }
+      45%, 80% { d: path("M172 114 L246 114"); }
+      100% { d: path("M172 114 L176 168"); }
+    }
+    @keyframes walk-leg-1 {
+      0%, 100% { transform: rotate(-16deg); }
+      50% { transform: rotate(16deg); }
+    }
+    @keyframes walk-leg-2 {
+      0%, 100% { transform: rotate(16deg); }
+      50% { transform: rotate(-16deg); }
+    }
+    @keyframes walk-arm {
+      0%, 100% { transform: rotate(18deg); }
+      50% { transform: rotate(-18deg); }
+    }
+    @keyframes belly-inflate {
+      0%, 100% { transform: scale(1) translateY(0); opacity: 0.45; }
+      50% { transform: scale(1.22, 1.35) translateY(-5px); opacity: 0.85; }
+    }
+
+    .anim-pulse { animation: pulse-ring 2s infinite ease-in-out; transform-box: fill-box; transform-origin: center; }
+    .anim-rub { animation: rub-circle 1.6s infinite linear; }
+    .anim-chin { animation: chin-tuck-glide 3.6s infinite ease-in-out; }
+    .anim-neck-spine { animation: spine-straighten 3.6s infinite ease-in-out; }
+    .anim-orbit-l { animation: elbow-orbit-left 2.6s infinite linear; transform-box: fill-box; transform-origin: center; }
+    .anim-orbit-r { animation: elbow-orbit-right 2.6s infinite linear; transform-box: fill-box; transform-origin: center; }
+    .anim-chest-lean { animation: chest-open-lean 3.8s infinite ease-in-out; transform-origin: 120px 180px; }
+    .anim-pec-glow { animation: pec-stretch-glow 3.8s infinite ease-in-out; transform-box: fill-box; transform-origin: center; }
+    .anim-tw-l { animation: tw-arm-left 4s infinite ease-in-out; }
+    .anim-tw-r { animation: tw-arm-right 4s infinite ease-in-out; }
+    .anim-scap-down { animation: scapula-down 4s infinite ease-in-out; }
+    .anim-chair-up { animation: chair-decompression 3.6s infinite ease-in-out; }
+    .anim-cat-arch { animation: cat-spine-arch 4s infinite ease-in-out; }
+    .anim-cat-head { animation: cat-head-nod 4s infinite ease-in-out; transform-origin: 85px 120px; }
+    .anim-angel-l { animation: wall-angel-left 4s infinite ease-in-out; }
+    .anim-angel-r { animation: wall-angel-right 4s infinite ease-in-out; }
+    .anim-bd-arm { animation: birddog-arm-reach 4.2s infinite ease-in-out; }
+    .anim-bd-leg { animation: birddog-leg-reach 4.2s infinite ease-in-out; }
+    .anim-walk-l1 { animation: walk-leg-1 0.9s infinite ease-in-out; transform-origin: 140px 126px; }
+    .anim-walk-l2 { animation: walk-leg-2 0.9s infinite ease-in-out; transform-origin: 140px 126px; }
+    .anim-walk-arm { animation: walk-arm 0.9s infinite ease-in-out; transform-origin: 140px 86px; }
+    .anim-belly { animation: belly-inflate 4.5s infinite ease-in-out; transform-box: fill-box; transform-origin: bottom center; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
@@ -260,298 +368,525 @@
 
   <!-- 스크립트: 동작별 맞춤형 SVG 일러스트 생성기 & 인터랙션 -->
   <script>
-    // 각 동작 번호(1~11)에 맞는 직관적인 맞춤형 SVG 도해 생성 함수
+    // 각 동작 번호(1~11)에 맞춰 관절·근육·시작~끝 궤적·금지자세까지 디테일하게 구현한 모션 SVG 생성기
     function getExerciseSVG(num) {
       const svgs = {
-        // 1번: 1~4번 부위별 목·어깨 손가락 마사지
+        // 1번: 1~4번 부위별 목·어깨 손가락 마사지 (해부학적 근육 결 + 손가락 문지르는 모션 + 상세 라벨)
         1: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 어깨 & 목 & 머리 실루엣 (측후면) -->
-            <path d="M55 190 C55 150, 85 140, 100 130 L100 95 C90 95, 85 75, 90 55 C95 30, 125 20, 150 30 C175 40, 180 70, 170 95 C165 108, 150 112, 142 112 L142 132 C165 142, 200 155, 205 190" fill="#e2e8f0" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
-            <!-- 귀 표현 -->
-            <path d="M132 68 C126 68, 124 82, 132 86" fill="none" stroke="#475569" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- 지압 포인트 4곳 (애니메이션 링 + 번호) -->
-            <!-- ① 턱 모서리 뒤 -->
-            <circle cx="145" cy="96" r="11" fill="#14b8a6" class="anim-pulse"/>
-            <circle cx="145" cy="96" r="8" fill="#0d9488"/>
-            <text x="145" y="100" text-anchor="middle" fill="white" font-size="10" font-weight="bold">1</text>
-            <!-- ② 귓볼 뒤 머리뼈 아래 -->
-            <circle cx="122" cy="88" r="11" fill="#14b8a6" class="anim-pulse"/>
-            <circle cx="122" cy="88" r="8" fill="#0d9488"/>
-            <text x="122" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">2</text>
-            <!-- ③ 목덜미 가로 비비기 -->
-            <circle cx="105" cy="112" r="11" fill="#14b8a6" class="anim-pulse"/>
-            <circle cx="105" cy="112" r="8" fill="#0d9488"/>
-            <text x="105" y="116" text-anchor="middle" fill="white" font-size="10" font-weight="bold">3</text>
-            <!-- ④ 옆머리 & 어깨 승모근 -->
-            <circle cx="160" cy="148" r="11" fill="#14b8a6" class="anim-pulse"/>
-            <circle cx="160" cy="148" r="8" fill="#0d9488"/>
-            <text x="160" y="152" text-anchor="middle" fill="white" font-size="10" font-weight="bold">4</text>
-            <!-- 하단 캡션 -->
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#ccfbf1"/>
-            <text x="130" y="27" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">1턱뒤 → 2귀뒤 → 3목뒤 → 4어깨 살살 문지르기</text>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <defs>
+              <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f8fafc"/>
+                <stop offset="100%" stop-color="#f1f5f9"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="230" rx="16" fill="url(#bg1)"/>
+            <!-- 상단 헤더 캡션 -->
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#0f766e"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">손가락 지문으로 ①→②→③→④ 순서대로 살살 문지르기</text>
+
+            <!-- 인체 해부 실루엣 (측후면 머리·목·어깨) -->
+            <path d="M55 215 C60 175, 92 162, 112 148 L114 108 C100 102, 96 76, 102 56 C110 34, 145 28, 168 42 C190 55, 192 85, 180 110 C174 122, 160 126, 152 126 L152 148 C178 160, 212 175, 222 215" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+            
+            <!-- 흉쇄유돌근(SCM) 및 승모근 근육 결 가이드 표시 -->
+            <path d="M138 98 L156 155" stroke="#cbd5e1" stroke-width="10" stroke-linecap="round"/>
+            <path d="M115 110 Q112 140 90 175" fill="none" stroke="#cbd5e1" stroke-width="12" stroke-linecap="round"/>
+            <!-- 귀 & 턱선 디테일 -->
+            <path d="M142 78 C134 78, 134 94, 142 96" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+            <path d="M180 105 Q168 122 148 115" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- 지압 포인트 ①: 턱뼈 모서리 바로 뒤 오목한 곳 -->
+            <g class="anim-rub">
+              <circle cx="156" cy="108" r="12" fill="#14b8a6" class="anim-pulse"/>
+              <circle cx="156" cy="108" r="8" fill="#0d9488" stroke="#fff" stroke-width="1.5"/>
+              <text x="156" y="112" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1</text>
+            </g>
+            <line x1="166" y1="108" x2="205" y2="92" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <rect x="205" y="78" width="102" height="24" rx="5" fill="#fff" stroke="#14b8a6" stroke-width="1.2"/>
+            <text x="256" y="94" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">① 턱모서리 뒤 (지그시)</text>
+
+            <!-- 지압 포인트 ②: 귓볼 뒤 머리뼈 아래 -->
+            <g class="anim-rub" style="animation-delay: 0.3s">
+              <circle cx="132" cy="96" r="12" fill="#14b8a6" class="anim-pulse"/>
+              <circle cx="132" cy="96" r="8" fill="#0d9488" stroke="#fff" stroke-width="1.5"/>
+              <text x="132" y="100" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2</text>
+            </g>
+            <line x1="122" y1="92" x2="92" y2="75" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <rect x="12" y="62" width="84" height="24" rx="5" fill="#fff" stroke="#14b8a6" stroke-width="1.2"/>
+            <text x="54" y="78" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">② 귀 뒤 뼈아래</text>
+
+            <!-- 지압 포인트 ③: 뒷목 가로 비비기 (좌우 화살표 포함) -->
+            <g class="anim-rub" style="animation-delay: 0.6s">
+              <circle cx="115" cy="126" r="12" fill="#14b8a6" class="anim-pulse"/>
+              <circle cx="115" cy="126" r="8" fill="#0d9488" stroke="#fff" stroke-width="1.5"/>
+              <text x="115" y="130" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">3</text>
+            </g>
+            <path d="M98 126 L132 126" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="104" y1="128" x2="88" y2="140" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <rect x="10" y="132" width="84" height="24" rx="5" fill="#fff" stroke="#14b8a6" stroke-width="1.2"/>
+            <text x="52" y="148" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">③ 뒷목 가로결</text>
+
+            <!-- 지압 포인트 ④: 옆머리(측두근) & 어깨 위(승모근) -->
+            <g class="anim-rub" style="animation-delay: 0.9s">
+              <circle cx="152" cy="64" r="9" fill="#0d9488" stroke="#fff" stroke-width="1.5"/>
+              <text x="152" y="68" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">4</text>
+              <circle cx="168" cy="166" r="12" fill="#14b8a6" class="anim-pulse"/>
+              <circle cx="168" cy="166" r="8" fill="#0d9488" stroke="#fff" stroke-width="1.5"/>
+              <text x="168" y="170" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">4</text>
+            </g>
+            <rect x="198" y="152" width="110" height="24" rx="5" fill="#fff" stroke="#14b8a6" stroke-width="1.2"/>
+            <text x="253" y="168" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">④ 옆머리·어깨 문지르기</text>
+
+            <!-- 하단 팁 바 -->
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#fef3c7"/>
+            <text x="160" y="213" text-anchor="middle" fill="#92400e" font-size="10" font-weight="bold">⚠️ 세게 누르지 말고 아기 피부 만지듯 50% 힘으로 둥글게 풀어주세요</text>
           </svg>
         `,
 
-        // 2번: 두턱 만들기 (서랍 넣듯 수평 이동)
+        // 2번: 두턱 만들기 (거북목 점선 잔상 + 경추 뼈 정렬 애니메이션 + 시선 수평 고정선 + 고개숙임 금지 비교)
         2: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 거북목 잔상 (점선) -->
-            <g opacity="0.35">
-              <circle cx="160" cy="78" r="28" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4 4"/>
-              <path d="M135 145 L155 104" stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 4"/>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#0f766e"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">눈은 정면 고정! 손가락으로 턱을 서랍 넣듯 수평으로 밀기</text>
+
+            <!-- 뒤쪽 기준 벽면 가이드 -->
+            <rect x="64" y="42" width="8" height="145" rx="3" fill="#cbd5e1"/>
+            <line x1="76" y1="42" x2="76" y2="187" stroke="#0d9488" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="52" y="115" text-anchor="middle" fill="#64748b" font-size="9" font-weight="bold" transform="rotate(-90 52 115)">뒤통수 닿는 방향</text>
+
+            <!-- 고정된 어깨와 가슴 몸통 -->
+            <path d="M92 192 C95 162, 115 152, 128 152 C142 152, 160 165, 164 192" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
+
+            <!-- 거북목 시작 자세 잔상 (연한 점선) -->
+            <g opacity="0.32">
+              <path d="M120 60 C120 40, 158 40, 166 60 L174 78 L165 83 L167 98 L138 102 C125 102, 120 85, 120 60 Z" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="3 3"/>
             </g>
-            <!-- 바른 자세 이동 후 (실선 + 애니메이션) -->
-            <g class="anim-slide-left">
-              <!-- 몸통/목 -->
-              <path d="M105 185 C105 150, 120 140, 130 140 L130 102" fill="none" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+
+            <!-- 경추(목뼈) 정렬 모션 라인 -->
+            <path d="M125 170 Q138 135 152 98" fill="none" stroke="#0d9488" stroke-width="6" stroke-linecap="round" class="anim-neck-spine"/>
+
+            <!-- 수평으로 슬라이드 이동하는 머리 + 검지손가락 -->
+            <g class="anim-chin">
               <!-- 머리 옆모습 -->
-              <path d="M110 55 C110 35, 145 35, 152 55 L158 72 L150 76 L152 92 L128 96 C115 96, 110 80, 110 55 Z" fill="#cbd5e1" stroke="#334155" stroke-width="3" stroke-linejoin="round"/>
-              <!-- 눈 시선 정면 표시 -->
-              <circle cx="146" cy="63" r="2.5" fill="#1e293b"/>
-              <line x1="158" y1="63" x2="210" y2="63" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <!-- 턱 끝 손가락 & 뒤로 밀기 화살표 -->
-              <path d="M195 86 L158 86" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
-              <polygon points="156,86 165,80 165,92" fill="#0d9488"/>
+              <path d="M98 58 C98 36, 138 36, 146 58 L154 75 L145 80 L147 96 L120 100 C106 100, 98 84, 98 58 Z" fill="#e2e8f0" stroke="#1e293b" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- 두턱 접히는 주름 표현 -->
+              <path d="M128 100 Q134 107 124 112" fill="none" stroke="#0f766e" stroke-width="2" stroke-linecap="round"/>
+              <!-- 눈 & 수평 시선 레이저 라인 -->
+              <circle cx="140" cy="65" r="3" fill="#0f172a"/>
+              <line x1="148" y1="65" x2="215" y2="65" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="192" y="57" fill="#0369a1" font-size="9" font-weight="bold">시선 수평 유지</text>
+
+              <!-- 턱 끝을 미는 손가락과 수평 화살표 -->
+              <rect x="168" y="86" width="26" height="9" rx="4.5" fill="#fed7aa" stroke="#c2410c" stroke-width="1.5"/>
+              <path d="M210 90 L156 90" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+              <polygon points="153,90 163,84 163,96" fill="#0d9488"/>
             </g>
-            <!-- 뒤통수 벽면 가이드선 -->
-            <line x1="95" y1="35" x2="95" y2="175" stroke="#0d9488" stroke-width="3" stroke-dasharray="5 5"/>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#ccfbf1"/>
-            <text x="130" y="27" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">고개 숙이지 말고 머리를 뒤로 수평 이동!</text>
+
+            <!-- 우측 하단: 잘못된 자세(고개 숙이기) 경고 박스 -->
+            <rect x="218" y="102" width="90" height="82" rx="10" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.5"/>
+            <text x="263" y="117" text-anchor="middle" fill="#e11d48" font-size="9.5" font-weight="bold">❌ 흔한 실수</text>
+            <circle cx="263" cy="142" r="14" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+            <!-- 아래로 푹 숙인 시선 화살표 -->
+            <path d="M273 146 L286 162" stroke="#e11d48" stroke-width="2" stroke-linecap="round"/>
+            <text x="263" y="175" text-anchor="middle" fill="#be123c" font-size="8.5" font-weight="bold">바닥 보며 숙이기 금지!</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#ccfbf1"/>
+            <text x="160" y="213" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">💡 턱 밑에 두턱이 잡히고 뒷목이 뻐근하게 늘어나면 5초 유지 후 힘 빼기</text>
           </svg>
         `,
 
-        // 3번: 벌새 날개뼈 롤링 (어깨에 손 얹고 팔꿈치 원 그리기)
+        // 3번: 벌새 날개뼈 롤링 (후면 날개뼈 움직임 + 양손 어깨 터치 + 작은원/큰원 이중 궤적 모션)
         3: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 상체 정면 실루엣 -->
-            <circle cx="130" cy="62" r="20" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
-            <path d="M95 185 L100 105 L160 105 L165 185" fill="#e2e8f0" stroke="#334155" stroke-width="3" stroke-linejoin="round"/>
-            <!-- 양손 어깨에 얹고 팔꿈치를 옆으로 든 모습 -->
-            <path d="M105 108 L55 115 L98 98" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M155 108 L205 115 L162 98" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 팔꿈치 끝 회전 원형 궤적 (좌/우) -->
-            <circle cx="52" cy="115" r="22" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 3" class="anim-pulse"/>
-            <circle cx="208" cy="115" r="22" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 3" class="anim-pulse"/>
-            <circle cx="52" cy="115" r="5" fill="#0d9488"/>
-            <circle cx="208" cy="115" r="5" fill="#0d9488"/>
-            <!-- 회전 화살표 텍스트 -->
-            <text x="52" y="152" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">빙글빙글 10회</text>
-            <text x="208" y="152" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">빙글빙글 10회</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#ccfbf1"/>
-            <text x="130" y="27" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">어깨에 손 얹고 팔꿈치로 허공에 원 그리기</text>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#0f766e"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">양손 끝을 어깨에 얹고 팔꿈치로 작은 원 10회 → 큰 원 10회</text>
+
+            <!-- 상체 후면(등) 실루엣 -->
+            <circle cx="160" cy="64" r="18" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
+            <path d="M116 190 L122 96 L198 96 L204 190 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- 척추 중심선 (고정) -->
+            <line x1="160" y1="84" x2="160" y2="188" stroke="#94a3b8" stroke-width="3" stroke-dasharray="4 3"/>
+            <!-- 좌우 날개뼈(견갑골) 해부 도형 -->
+            <polygon points="130,106 150,106 146,142 126,134" fill="#99f6e4" stroke="#0d9488" stroke-width="2" class="anim-scap-down"/>
+            <polygon points="190,106 170,106 174,142 194,134" fill="#99f6e4" stroke="#0d9488" stroke-width="2" class="anim-scap-down"/>
+
+            <!-- 왼쪽 팔꿈치 궤적 (작은 원 + 큰 원) -->
+            <circle cx="62" cy="116" r="16" fill="none" stroke="#14b8a6" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="62" cy="116" r="32" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <!-- 오른쪽 팔꿈치 궤적 (작은 원 + 큰 원) -->
+            <circle cx="258" cy="116" r="16" fill="none" stroke="#14b8a6" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="258" cy="116" r="32" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+            <!-- 회전하는 양쪽 팔과 팔꿈치 포인트 -->
+            <g class="anim-orbit-l">
+              <polyline points="124,102 62,116 120,94" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="120" cy="94" r="5" fill="#f59e0b"/>
+              <circle cx="62" cy="116" r="7" fill="#0d9488" stroke="#fff" stroke-width="2"/>
+            </g>
+            <g class="anim-orbit-r">
+              <polyline points="196,102 258,116 200,94" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="200" cy="94" r="5" fill="#f59e0b"/>
+              <circle cx="258" cy="116" r="7" fill="#0d9488" stroke="#fff" stroke-width="2"/>
+            </g>
+
+            <!-- 설명 라벨 -->
+            <text x="62" y="164" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">뒤쪽으로 회전 ↺</text>
+            <text x="258" y="164" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">↻ 뒤쪽으로 회전</text>
+            <text x="160" y="158" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">날개뼈만 부드럽게 활공</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#ccfbf1"/>
+            <text x="160" y="213" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">💡 주황색 점(양손 끝)을 어깨에 붙여두면 등뼈가 꺾이지 않고 날개뼈만 풀립니다</text>
           </svg>
         `,
 
-        // 4번: 벽/코너 가슴 열기
+        // 4번: 벽 짚고 앞가슴 열기 (벽면 90도 팔 밀착 + 앞발 반걸음 + 대흉근/소흉근 이완 글로우 모션)
         4: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 왼쪽 벽면 -->
-            <rect x="35" y="35" width="14" height="150" rx="4" fill="#94a3b8"/>
-            <text x="42" y="195" text-anchor="middle" fill="#475569" font-size="10" font-weight="bold">벽면</text>
-            <!-- 사람 상체 -->
-            <circle cx="135" cy="68" r="19" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
-            <path d="M110 180 L112 105 L158 105 L160 180" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
-            <!-- 벽에 90도로 댄 팔 (ㄴ자) -->
-            <path d="M112 112 L68 112 L68 70 L49 70" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 반대쪽 팔 -->
-            <path d="M158 112 L175 155" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <!-- 가슴 앞쪽 늘어나는 포인트 & 몸통 회전 화살표 -->
-            <circle cx="115" cy="115" r="12" fill="#14b8a6" opacity="0.4" class="anim-pulse"/>
-            <path d="M140 135 Q180 135 195 120" fill="none" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
-            <polygon points="198,117 187,120 194,128" fill="#0d9488"/>
-            <text x="195" y="148" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">몸통 살짝 돌리기</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#dbeafe"/>
-            <text x="130" y="27" text-anchor="middle" fill="#1d4ed8" font-size="11" font-weight="bold">팔꿈치 90도로 벽 짚고 앞가슴 시원하게 펴기</text>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#1d4ed8"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">팔꿈치 90도(ㄴ자)로 벽에 대고 몸통을 반대쪽으로 살짝 회전</text>
+
+            <!-- 왼쪽 벽 기둥 -->
+            <rect x="36" y="42" width="18" height="148" rx="4" fill="#64748b"/>
+            <text x="45" y="118" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" transform="rotate(-90 45 118)">벽 / 기둥 모서리</text>
+
+            <!-- 벽에 고정된 팔뚝 (ㄴ자 90도 표시) -->
+            <polyline points="118,108 72,108 72,62 54,62" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="72" y="96" width="12" height="12" fill="none" stroke="#f59e0b" stroke-width="2"/>
+            <text x="82" y="56" fill="#0f766e" font-size="10" font-weight="bold">팔꿈치 90° 고정</text>
+
+            <!-- 상체 및 하체 (살짝 앞으로 기울며 회전하는 모션) -->
+            <g class="anim-chest-lean">
+              <!-- 머리 (턱 당김 유지) -->
+              <circle cx="142" cy="68" r="16" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
+              <!-- 몸통 -->
+              <path d="M116 154 L118 96 L166 96 L164 154 Z" fill="#e2e8f0" stroke="#1e293b" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- 앞가슴(대흉근·소흉근) 늘어나는 부위 하이라이트 -->
+              <ellipse cx="126" cy="112" rx="16" ry="12" fill="#14b8a6" class="anim-pec-glow"/>
+              <text x="142" y="136" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">앞가슴 이완!</text>
+              <!-- 반대쪽 팔 -->
+              <path d="M166 102 L182 146" stroke="#334155" stroke-width="6.5" stroke-linecap="round"/>
+              <!-- 반 걸음 앞으로 디딘 다리 스탠스 -->
+              <line x1="130" y1="154" x2="112" y2="188" stroke="#475569" stroke-width="6.5" stroke-linecap="round"/>
+              <line x1="152" y1="154" x2="174" y2="188" stroke="#1e293b" stroke-width="6.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- 몸통 회전 유도 화살표 -->
+            <path d="M192 116 Q225 116 238 96" fill="none" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="241,92 231,96 239,103" fill="#0d9488"/>
+            <text x="255" y="122" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">몸통을 벽 반대로</text>
+            <text x="255" y="135" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">살짝 돌리며 20초</text>
+            <text x="144" y="193" text-anchor="middle" fill="#475569" font-size="9.5" font-weight="bold">👣 한 발 반 걸음 앞으로</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#dbeafe"/>
+            <text x="160" y="213" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">💡 허리를 앞으로 꺾어 배를 내밀지 말고, 쇄골 앞가슴만 기분 좋게 펴주세요</text>
           </svg>
         `,
 
-        // 5번: T-W 날개뼈 흉곽 오픈
+        // 5번: T-W 모양으로 팔 벌리기 (팔이 T자에서 W자로 변형되는 실시간 모핑 + 날개뼈 하강 화살표)
         5: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 좌측: T자 자세 -->
-            <g transform="translate(10, 10)">
-              <circle cx="55" cy="58" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-              <path d="M40 155 L42 82 L68 82 L70 155" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
-              <!-- 양팔 수평 T -->
-              <line x1="10" y1="88" x2="100" y2="88" stroke="#0d9488" stroke-width="7" stroke-linecap="round"/>
-              <text x="55" y="175" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">① T자 (15초)</text>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#1d4ed8"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">① 양팔 수평 T자(15초) ↔ ② 팔꿈치 접어 W자로 끌어내리기(15초)</text>
+
+            <!-- T자 기본 가이드 잔상 (점선) -->
+            <line x1="48" y1="96" x2="232" y2="96" stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 4"/>
+            <text x="48" y="84" text-anchor="middle" fill="#64748b" font-size="10" font-weight="bold">① T자 수평</text>
+            <text x="232" y="84" text-anchor="middle" fill="#64748b" font-size="10" font-weight="bold">① T자 수평</text>
+
+            <!-- 상체 후면(등) -->
+            <circle cx="140" cy="60" r="16" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
+            <path d="M112 184 L116 90 L164 90 L168 184 Z" fill="#e2e8f0" stroke="#1e293b" stroke-width="2.5" stroke-linejoin="round"/>
+
+            <!-- 실시간으로 T <-> W 변형되는 양팔 애니메이션 -->
+            <path d="M118 96 L82 96 L48 96" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="anim-tw-l"/>
+            <path d="M162 96 L198 96 L232 96" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="anim-tw-r"/>
+
+            <!-- 등 뒤 날개뼈 하강 모션 화살표 -->
+            <g class="anim-scap-down">
+              <polygon points="124,104 136,104 134,132 122,126" fill="#14b8a6" stroke="#0f766e" stroke-width="1.5"/>
+              <polygon points="156,104 144,104 146,132 158,126" fill="#14b8a6" stroke="#0f766e" stroke-width="1.5"/>
+              <path d="M130 136 L130 156" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="130,160 125,152 135,152" fill="#e11d48"/>
+              <path d="M150 136 L150 156" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="150,160 145,152 155,152" fill="#e11d48"/>
             </g>
-            <!-- 중앙 화살표 -->
-            <path d="M122 105 L138 105" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="140,105 133,100 133,110" fill="#64748b"/>
-            <!-- 우측: W자 자세 -->
-            <g transform="translate(135, 10)">
-              <circle cx="60" cy="58" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-              <path d="M45 155 L47 82 L73 82 L75 155" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
-              <!-- 양팔 W 모양 -->
-              <polyline points="20,75 35,112 48,88 72,88 85,112 100,75" fill="none" stroke="#0d9488" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- 날개뼈 아래로 화살표 -->
-              <path d="M60 95 L60 128" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-              <polygon points="60,132 54,123 66,123" fill="#e11d48"/>
-              <text x="60" y="175" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">② W자 (15초)</text>
-            </g>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#dbeafe"/>
-            <text x="130" y="27" text-anchor="middle" fill="#1d4ed8" font-size="11" font-weight="bold">양팔 T자로 벌렸다 → 팔꿈치 접어 W자로 내리기</text>
+            <text x="92" y="145" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">② W자 접기</text>
+            <text x="188" y="145" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">② W자 접기</text>
+
+            <!-- 우측 금지 안내 카드 (I자 만세 금지) -->
+            <rect x="246" y="96" width="62" height="86" rx="8" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.5"/>
+            <text x="277" y="114" text-anchor="middle" fill="#e11d48" font-size="9.5" font-weight="bold">❌ 주의</text>
+            <line x1="270" y1="150" x2="270" y2="122" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
+            <line x1="284" y1="150" x2="284" y2="122" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
+            <text x="277" y="166" text-anchor="middle" fill="#be123c" font-size="8.5" font-weight="bold">머리 위 만세</text>
+            <text x="277" y="177" text-anchor="middle" fill="#be123c" font-size="8.5" font-weight="bold">(I자) 보류!</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#dbeafe"/>
+            <text x="160" y="213" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">💡 W자로 팔꿈치를 접을 때 날개뼈를 바지 뒷주머니 쪽으로 지그시 끌어내리세요</text>
           </svg>
         `,
 
-        // 6번: 의자 흉곽 언로딩 (손으로 의자 밀어 어깨 내리기)
+        // 6번: 의자 짚고 어깨 쑥 내리기 (손으로 좌판 밀기 + 척추 마디 감압 상승 모션 + 발바닥 접지)
         6: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 의자 좌판 & 다리 -->
-            <rect x="75" y="142" width="110" height="10" rx="4" fill="#64748b"/>
-            <line x1="90" y1="152" x2="85" y2="190" stroke="#64748b" stroke-width="5" stroke-linecap="round"/>
-            <line x1="170" y1="152" x2="175" y2="190" stroke="#64748b" stroke-width="5" stroke-linecap="round"/>
-            <!-- 앉아있는 상체 (위로 길어지는 애니메이션) -->
-            <g class="anim-float">
-              <circle cx="130" cy="65" r="17" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
-              <path d="M108 142 L110 90 L150 90 L152 142 Z" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
-              <!-- 양손으로 의자 좌판 짚기 -->
-              <path d="M110 93 L95 118 L98 142" fill="none" stroke="#0d9488" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M150 93 L165 118 L162 142" fill="none" stroke="#0d9488" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#1d4ed8"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">양손으로 의자 바닥을 밀어 어깨는 내리고 정수리는 위로 세우기</text>
+
+            <!-- 의자 구조물 -->
+            <rect x="88" y="148" width="144" height="10" rx="4" fill="#475569"/>
+            <line x1="104" y1="158" x2="98" y2="192" stroke="#475569" stroke-width="5" stroke-linecap="round"/>
+            <line x1="216" y1="158" x2="222" y2="192" stroke="#475569" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- 위로 길어지며 감압되는 상체 모션 -->
+            <g class="anim-chair-up">
+              <!-- 머리 & 정수리 상승 화살표 -->
+              <circle cx="160" cy="68" r="16" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
+              <path d="M160 48 L160 36" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+              <polygon points="160,33 155,41 165,41" fill="#0d9488"/>
+              <!-- 몸통 & 척추 마디 감압 표시 -->
+              <path d="M132 148 L135 92 L185 92 L188 148 Z" fill="#e2e8f0" stroke="#1e293b" stroke-width="2.5"/>
+              <line x1="160" y1="98" x2="160" y2="142" stroke="#0d9488" stroke-width="4" stroke-dasharray="5 5"/>
+              <!-- 의자 좌판을 짚고 펴지는 양팔 -->
+              <polyline points="135,96 116,122 118,148" fill="none" stroke="#0d9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="185,96 204,122 202,148" fill="none" stroke="#0d9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
-            <!-- 손으로 아래로 미는 화살표 & 정수리 위로 화살표 -->
-            <path d="M68 115 L68 140" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="68,144 63,136 73,136" fill="#0d9488"/>
-            <text x="42" y="132" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">손으로 밀기</text>
-            <path d="M192 85 L192 55" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="192,50 187,59 197,59" fill="#0d9488"/>
-            <text x="218" y="72" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">등 펴짐</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#dbeafe"/>
-            <text x="130" y="27" text-anchor="middle" fill="#1d4ed8" font-size="11" font-weight="bold">양손으로 의자 바닥을 밀어 어깨를 쑥 내리기</text>
+
+            <!-- 양손으로 의자를 아래로 미는 힘 화살표 -->
+            <path d="M82 116 L82 144" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="82,148 77,139 87,139" fill="#e11d48"/>
+            <text x="48" y="128" text-anchor="middle" fill="#be123c" font-size="9.5" font-weight="bold">① 손으로 의자</text>
+            <text x="48" y="140" text-anchor="middle" fill="#be123c" font-size="9.5" font-weight="bold">아래로 밀기</text>
+
+            <!-- 등뼈 압력 해소 설명 -->
+            <text x="262" y="106" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">② 어깨는 내려가고</text>
+            <text x="262" y="118" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">등뼈 마디가 펴짐</text>
+            <text x="160" y="182" text-anchor="middle" fill="#475569" font-size="9.5" font-weight="bold">엉덩이와 발은 띄우지 않고 가볍게 지지</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#dbeafe"/>
+            <text x="160" y="213" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="bold">💡 위험한 철봉 매달리기 대신 의자에서 안전하게 등뼈 압력을 빼주는 동작입니다</text>
           </svg>
         `,
 
-        // 7번: 네발기기 고양이-중립 (등 둥글게 말기 vs 평평하게, 소자세 금지)
+        // 7번: 네발기기 고양이-중립 (척추 아치 모션 <-> 평평한 중립 복귀 + 소자세 허리꺾기 금지 비교)
         7: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 바닥 매트 -->
-            <line x1="30" y1="168" x2="230" y2="168" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
-            <!-- 팔과 무릎 (네발기기 기둥) -->
-            <line x1="80" y1="115" x2="80" y2="168" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <line x1="175" y1="115" x2="175" y2="168" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <line x1="175" y1="168" x2="205" y2="168" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <!-- 머리 -->
-            <circle cx="62" cy="122" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-            <!-- ① 고양이 등 (위로 둥글게 아치) -->
-            <path d="M78 115 Q128 70 175 115" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" class="anim-float"/>
-            <!-- ② 중립 평평한 등 (점선) -->
-            <line x1="78" y1="115" x2="175" y2="115" stroke="#64748b" stroke-width="4" stroke-dasharray="5 4"/>
-            <!-- ❌ 아래로 꺾는 소 자세 금지 표시 -->
-            <path d="M78 118 Q128 148 175 118" fill="none" stroke="#fda4af" stroke-width="3" stroke-dasharray="3 3"/>
-            <text x="128" y="150" text-anchor="middle" fill="#e11d48" font-size="10" font-weight="bold">❌ 아래로 등 꺾기 금지</text>
-            <!-- 위로 올리는 화살표 -->
-            <path d="M128 95 L128 72" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="128,67 123,76 133,76" fill="#0d9488"/>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#e0e7ff"/>
-            <text x="130" y="27" text-anchor="middle" fill="#4338ca" font-size="11" font-weight="bold">등을 천장으로 둥글게 말았다가 → 일자까지만 복귀</text>
-          </svg>
-        `,
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#4338ca"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">① 등을 천장으로 둥글게 말기(3초) ↔ ② 평평한 일자까지만 복귀</text>
 
-        // 8번: 벽 천사 운동 (Wall Angel - 벽에 등 붙이고 W -> V)
-        8: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 배경 벽 타일 느낌 -->
-            <rect x="45" y="38" width="170" height="145" rx="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
-            <!-- 몸통 & 머리 (벽에 밀착) -->
-            <circle cx="130" cy="78" r="17" fill="#fff" stroke="#334155" stroke-width="3"/>
-            <path d="M105 180 L108 105 L152 105 L155 180" fill="#fff" stroke="#334155" stroke-width="3"/>
-            <!-- V자 만세 궤적 (연한 점선) -->
-            <polyline points="68,55 105,110 155,110 192,55" fill="none" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" stroke-dasharray="5 5"/>
-            <!-- W자 현재 팔 위치 (초록색 강조) -->
-            <polyline points="65,92 84,132 108,110 152,110 176,132 195,92" fill="none" stroke="#0d9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" class="anim-float"/>
-            <!-- 위아래 슬라이드 화살표 -->
-            <path d="M55 85 L55 58" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="55,53 50,61 60,61" fill="#0d9488"/>
-            <path d="M205 85 L205 58" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
-            <polygon points="205,53 200,61 210,61" fill="#0d9488"/>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#e0e7ff"/>
-            <text x="130" y="27" text-anchor="middle" fill="#4338ca" font-size="11" font-weight="bold">벽에 등·뒤통수 붙이고 팔을 W ↔ V로 쓸어올리기</text>
-          </svg>
-        `,
+            <!-- 매트 바닥선 -->
+            <line x1="28" y1="176" x2="292" y2="176" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
 
-        // 9번: 쿼드러페드 버드독 (팔다리 앞뒤로 수평 뻗기)
-        9: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 바닥 매트 -->
-            <line x1="20" y1="168" x2="240" y2="168" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
-            <!-- 지지하는 팔과 무릎 -->
-            <line x1="95" y1="115" x2="95" y2="168" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <line x1="158" y1="115" x2="158" y2="168" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-            <!-- 평평한 몸통 & 머리 -->
-            <line x1="90" y1="115" x2="162" y2="115" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="76" cy="112" r="12" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-            <!-- 수평으로 뻗은 오른팔 & 왼다리 (초록색 강조) -->
-            <line x1="88" y1="115" x2="32" y2="115" stroke="#0d9488" stroke-width="7" stroke-linecap="round"/>
-            <line x1="160" y1="115" x2="225" y2="115" stroke="#0d9488" stroke-width="7" stroke-linecap="round"/>
-            <!-- 앞뒤로 길게 뻗는 화살표 -->
-            <polygon points="22,115 32,109 32,121" fill="#0d9488"/>
-            <polygon points="235,115 225,109 225,121" fill="#0d9488"/>
-            <text x="130" y="92" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">← 위로 들지 말고 앞뒤로 길게 일직선! →</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#e0e7ff"/>
-            <text x="130" y="27" text-anchor="middle" fill="#4338ca" font-size="11" font-weight="bold">오른팔과 왼다리를 바닥과 수평으로 3초 뻗기</text>
-          </svg>
-        `,
+            <!-- 어깨 아래 손, 골반 아래 무릎 수직 가이드 -->
+            <line x1="88" y1="122" x2="88" y2="176" stroke="#1e293b" stroke-width="7" stroke-linecap="round"/>
+            <line x1="192" y1="122" x2="192" y2="176" stroke="#1e293b" stroke-width="7" stroke-linecap="round"/>
+            <line x1="192" y1="176" x2="226" y2="176" stroke="#1e293b" stroke-width="7" stroke-linecap="round"/>
 
-        // 10번: 척추 무충격 야외 인터벌 파워워킹
-        10: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 지면 -->
-            <line x1="30" y1="175" x2="230" y2="175" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
-            <!-- 걷는 사람 측면 실루엣 (상체 꼿꼿이) -->
-            <g class="anim-float">
-              <circle cx="130" cy="60" r="15" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
-              <!-- 시선 15m 앞 화살표 -->
-              <line x1="145" y1="58" x2="195" y2="58" stroke="#0d9488" stroke-width="2" stroke-dasharray="3 3"/>
-              <text x="208" y="62" fill="#0f766e" font-size="9" font-weight="bold">정면시선</text>
-              <!-- 꼿꼿한 몸통 -->
-              <line x1="130" y1="76" x2="130" y2="128" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
-              <!-- 90도로 접어 흔드는 팔 -->
-              <polyline points="130,85 112,110 138,112" fill="none" stroke="#0d9488" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- 좁은 보폭 다리 -->
-              <line x1="130" y1="128" x2="110" y2="172" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <line x1="130" y1="128" x2="152" y2="172" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+            <!-- ②번 평평한 중립 척추 기준선 (점선) -->
+            <line x1="88" y1="122" x2="192" y2="122" stroke="#64748b" stroke-width="4" stroke-dasharray="5 4"/>
+            <text x="248" y="125" text-anchor="middle" fill="#475569" font-size="9.5" font-weight="bold">② 일자 중립(멈춤)</text>
+
+            <!-- ①번 천장으로 둥글게 말리는 척추 모션 -->
+            <path d="M88 122 Q140 122 192 122" fill="none" stroke="#0d9488" stroke-width="9" stroke-linecap="round" class="anim-cat-arch"/>
+            
+            <!-- 배꼽을 보며 숙여지는 머리 모션 -->
+            <g class="anim-cat-head">
+              <circle cx="68" cy="124" r="14" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
             </g>
-            <!-- 좁은 보폭 & 빠른 회전 표시 -->
-            <path d="M108 186 L154 186" stroke="#0d9488" stroke-width="2.5"/>
-            <text x="131" y="196" text-anchor="middle" fill="#0f766e" font-size="9" font-weight="bold">보폭은 좁게, 발걸음만 빠르게!</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#e0e7ff"/>
-            <text x="130" y="27" text-anchor="middle" fill="#4338ca" font-size="11" font-weight="bold">[빠르게 걷기 4분 + 보통 걷기 2분] 반복</text>
+
+            <!-- 천장 방향 화살표 -->
+            <path d="M140 94 L140 66" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="140,61 135,70 145,70" fill="#0d9488"/>
+            <text x="140" y="55" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">① 날개뼈 사이를 천장으로 둥글게 (날숨)</text>
+
+            <!-- ❌ 절대 금지: 아래로 배를 꺼뜨리는 소 자세(Cow Pose) 경고 -->
+            <path d="M88 125 Q140 158 192 125" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="3 3"/>
+            <rect x="92" y="144" width="100" height="20" rx="5" fill="#ffe4e6"/>
+            <text x="142" y="158" text-anchor="middle" fill="#e11d48" font-size="9.5" font-weight="bold">❌ 아래로 등 꺾기 금지</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#e0e7ff"/>
+            <text x="160" y="213" text-anchor="middle" fill="#3730a3" font-size="10" font-weight="bold">💡 등을 아래로 꺼뜨리면 신경이 눌립니다! 반드시 '평평한 식탁 상태'까지만 돌아오세요</text>
           </svg>
         `,
 
-        // 11번: 3차원 복식호흡 & 통증 제로 수면 베개 세팅
+        // 8번: 벽 천사 운동 (전면 W<->V 팔 슬라이드 모션 + 우측 측면도 발 한뼘 앞 & 등 밀착 가이드)
+        8: `
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#4338ca"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">벽에 뒤통수·등·엉덩이 붙이고 양팔을 W ↔ V 모양으로 쓸어올리기</text>
+
+            <!-- 좌측: 정면 벽 슬라이드 모션 (W <-> V) -->
+            <rect x="22" y="42" width="188" height="148" rx="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+            <!-- V자 상단 궤적 가이드 -->
+            <polyline points="122,106 84,82 66,44" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 4"/>
+            <polyline points="158,106 196,82 214,44" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 4"/>
+
+            <!-- 몸통 & 머리 -->
+            <circle cx="140" cy="76" r="15" fill="#ffffff" stroke="#1e293b" stroke-width="2.5"/>
+            <path d="M116 186 L120 102 L160 102 L164 186 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2.5"/>
+
+            <!-- 실시간 W <-> V 슬라이드하는 양팔 -->
+            <path d="M122 106 L88 134 L70 95" fill="none" stroke="#0d9488" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" class="anim-angel-l"/>
+            <path d="M158 106 L192 134 L210 95" fill="none" stroke="#0d9488" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" class="anim-angel-r"/>
+            <text x="52" y="118" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">W ↔ V</text>
+
+            <!-- 우측: 측면 밀착 체크 카드 (뒤통수·등·엉덩이 밀착 + 발 한뼘 앞) -->
+            <rect x="220" y="42" width="88" height="148" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="264" y="56" text-anchor="middle" fill="#1e293b" font-size="9.5" font-weight="bold">[옆모습 체크]</text>
+            <!-- 측면 벽 -->
+            <line x1="242" y1="64" x2="242" y2="180" stroke="#64748b" stroke-width="4"/>
+            <!-- 측면 사람 (밀착 포인트 3곳) -->
+            <circle cx="252" cy="78" r="9" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+            <path d="M248 88 L248 142 L268 178" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 밀착 초록 포인트 3개 -->
+            <circle cx="243" cy="78" r="3.5" fill="#10b981"/>
+            <circle cx="243" cy="110" r="3.5" fill="#10b981"/>
+            <circle cx="243" cy="140" r="3.5" fill="#10b981"/>
+            <text x="276" y="112" text-anchor="middle" fill="#0f766e" font-size="8.5" font-weight="bold">등 밀착</text>
+            <text x="268" y="186" text-anchor="middle" fill="#4338ca" font-size="8.5" font-weight="bold">발은 한뼘 앞</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#e0e7ff"/>
+            <text x="160" y="213" text-anchor="middle" fill="#3730a3" font-size="10" font-weight="bold">💡 발뒤꿈치를 벽에서 한 뼘 앞에 두면 허리가 안 뜨고 등 속근육에 정확히 힘이 들어갑니다</text>
+          </svg>
+        `,
+
+        // 9번: 버드독 (네발기기 준비 -> 팔다리 수평 뻗기 모션 + 위로 높이 들어 허리 꺾기 금지 비교)
+        9: `
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#4338ca"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">등은 식탁처럼 평평하게 고정! 오른팔·왼다리를 수평으로 길게 뻗기</text>
+
+            <!-- 매트 바닥 -->
+            <line x1="20" y1="172" x2="300" y2="172" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- 수평 정렬 가이드선 -->
+            <line x1="24" y1="114" x2="296" y2="114" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+            <!-- ❌ 금지 궤적: 팔다리를 위로 높이 들어 허리 꺾임 (붉은 점선) -->
+            <path d="M102 114 L42 74" stroke="#fda4af" stroke-width="3" stroke-dasharray="3 3"/>
+            <path d="M172 114 L242 72" stroke="#fda4af" stroke-width="3" stroke-dasharray="3 3"/>
+            <text x="235" y="66" text-anchor="middle" fill="#e11d48" font-size="9.5" font-weight="bold">❌ 위로 높이 들기 금지 (허리꺾임)</text>
+
+            <!-- 지지하는 왼팔과 오른무릎 -->
+            <line x1="106" y1="114" x2="106" y2="172" stroke="#334155" stroke-width="6.5" stroke-linecap="round"/>
+            <line x1="168" y1="114" x2="168" y2="172" stroke="#334155" stroke-width="6.5" stroke-linecap="round"/>
+
+            <!-- 실시간으로 뻗었다 돌아오는 오른팔 & 왼다리 모션 -->
+            <path d="M102 114 L98 168" fill="none" stroke="#0d9488" stroke-width="7.5" stroke-linecap="round" class="anim-bd-arm"/>
+            <path d="M172 114 L176 168" fill="none" stroke="#0d9488" stroke-width="7.5" stroke-linecap="round" class="anim-bd-leg"/>
+
+            <!-- 흔들리지 않는 평평한 몸통과 머리 (시선 바닥) -->
+            <line x1="96" y1="114" x2="176" y2="114" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="80" cy="112" r="12" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
+
+            <!-- 앞뒤 수평 화살표 & 코어 힘 표시 -->
+            <text x="136" y="96" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">← 앞뒤 벽을 찌르듯 수평 일직선 (3초 멈춤) →</text>
+            <text x="136" y="138" text-anchor="middle" fill="#4338ca" font-size="9.5" font-weight="bold">배꼽에 30% 힘 (등 흔들림 방지)</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#e0e7ff"/>
+            <text x="160" y="213" text-anchor="middle" fill="#3730a3" font-size="10" font-weight="bold">💡 높이 들지 말고 바닥과 평행하게만 뻗어야 흉추 관절에 무리가 전혀 없습니다</text>
+          </svg>
+        `,
+
+        // 10번: 척추 무충격 인터벌 파워워킹 (다리 교차 모션 + 팔 90도 스윙 + 좁은 보폭 vs 넓은 보폭 비교)
+        10: `
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#4338ca"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">보폭은 좁게, 발걸음 회전수만 빠르게! [빠르게 4분 + 보통 2분]</text>
+
+            <!-- 지면 -->
+            <line x1="20" y1="178" x2="210" y2="178" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- 걷는 사람 측면 애니메이션 -->
+            <!-- 교차하는 뒷다리 -->
+            <g class="anim-walk-l2">
+              <line x1="140" y1="126" x2="140" y2="174" stroke="#64748b" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <!-- 꼿꼿한 몸통 & 시선 정면 머리 -->
+            <line x1="140" y1="78" x2="140" y2="126" stroke="#1e293b" stroke-width="11" stroke-linecap="round"/>
+            <circle cx="140" cy="60" r="14" fill="#cbd5e1" stroke="#1e293b" stroke-width="2.5"/>
+            <line x1="154" y1="58" x2="202" y2="58" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="3 3"/>
+            <text x="190" y="50" text-anchor="middle" fill="#0369a1" font-size="9" font-weight="bold">15m 앞 정면시선</text>
+
+            <!-- 교차하는 앞다리 -->
+            <g class="anim-walk-l1">
+              <line x1="140" y1="126" x2="140" y2="174" stroke="#1e293b" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <!-- 90도로 접어 흔드는 팔 모션 -->
+            <g class="anim-walk-arm">
+              <polyline points="140,86 126,110 152,110" fill="none" stroke="#0d9488" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- 좁은 보폭 가이드 표시 -->
+            <path d="M118 188 L162 188" stroke="#0d9488" stroke-width="2.5"/>
+            <text x="140" y="196" text-anchor="middle" fill="#0f766e" font-size="9" font-weight="bold">⭕ 좁은 보폭 · 빠른 발걸음</text>
+
+            <!-- 우측: 인터벌 타이밍 & 금지 보폭 비교 박스 -->
+            <rect x="216" y="44" width="92" height="142" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="262" y="62" text-anchor="middle" fill="#4338ca" font-size="10" font-weight="bold">⏱️ 인터벌 공식</text>
+            <rect x="224" y="70" width="76" height="24" rx="5" fill="#e0e7ff"/>
+            <text x="262" y="86" text-anchor="middle" fill="#3730a3" font-size="9.5" font-weight="bold">빠른 속보 4분</text>
+            <rect x="224" y="98" width="76" height="22" rx="5" fill="#f1f5f9"/>
+            <text x="262" y="113" text-anchor="middle" fill="#475569" font-size="9.5" font-weight="bold">보통 걸음 2분</text>
+            <text x="262" y="136" text-anchor="middle" fill="#0f766e" font-size="9" font-weight="bold">× 6세트 반복</text>
+            <line x1="224" y1="146" x2="300" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="262" y="162" text-anchor="middle" fill="#e11d48" font-size="9" font-weight="bold">❌ 넓은 보폭·뜀박질</text>
+            <text x="262" y="175" text-anchor="middle" fill="#be123c" font-size="8.5" font-weight="bold">등뼈 충격 전달됨!</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#e0e7ff"/>
+            <text x="160" y="213" text-anchor="middle" fill="#3730a3" font-size="10" font-weight="bold">💡 보폭을 넓히면 뒤꿈치 충격이 등뼈로 올라옵니다. 평소 보폭으로 종종걸음처럼 빠르게!</text>
+          </svg>
+        `,
+
+        // 11번: 배 풍선 복식호흡 & 통증 제로 수면 베개 세팅 (똑바로 누울 때 vs 옆으로 누울 때 2분할 도해)
         11: `
-          <svg viewBox="0 0 260 200" class="w-full h-full">
-            <rect width="260" height="200" rx="16" fill="#f8fafc"/>
-            <!-- 침대 매트리스 -->
-            <rect x="20" y="155" width="220" height="18" rx="6" fill="#cbd5e1"/>
-            <!-- 등 뒤 30도 경사 쿠션 (초록색 강조) -->
-            <polygon points="30,155 110,155 35,105" fill="#99f6e4" stroke="#0d9488" stroke-width="2"/>
-            <!-- 무릎 아래 받침 베개 (초록색 강조) -->
-            <ellipse cx="168" cy="148" rx="22" ry="10" fill="#99f6e4" stroke="#0d9488" stroke-width="2"/>
-            <!-- 편안히 누운 사람 -->
-            <circle cx="52" cy="95" r="14" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
-            <path d="M64 108 L125 145 L168 132 L212 152" fill="none" stroke="#334155" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 부풀어 오르는 배 (복식호흡 애니메이션) -->
-            <circle cx="108" cy="124" r="14" fill="#14b8a6" opacity="0.5" class="anim-breathe"/>
-            <path d="M108 112 L108 88" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
-            <polygon points="108,83 103,91 113,91" fill="#0d9488"/>
-            <text x="108" y="77" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">배만 볼록(4초)</text>
-            <text x="168" y="186" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">등 뒤 + 무릎 밑에 베개 받치기</text>
-            <rect x="15" y="12" width="230" height="22" rx="6" fill="#ccfbf1"/>
-            <text x="130" y="27" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="bold">배를 부풀려 호흡하고 베개로 등·무릎 받쳐 자기</text>
+          <svg viewBox="0 0 320 230" class="w-full h-full select-none">
+            <rect width="320" height="230" rx="16" fill="#f8fafc"/>
+            <rect x="12" y="10" width="296" height="24" rx="8" fill="#0f766e"/>
+            <text x="160" y="26" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">배만 부풀리는 호흡(4초 들숨·6초 날숨) + 등 안 눌리는 베개 세팅</text>
+
+            <!-- 좌측: 똑바로 누울 때 (등 뒤 경사 베개 + 무릎 밑 베개 + 배 풍선 호흡) -->
+            <rect x="14" y="42" width="178" height="148" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="103" y="56" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">① 똑바로 잘 때 (리클라이너 세팅)</text>
+            <!-- 매트리스 -->
+            <rect x="22" y="156" width="162" height="12" rx="4" fill="#94a3b8"/>
+            <!-- 등 뒤 30도 경사 쿠션 & 무릎 아래 베개 -->
+            <polygon points="26,156 96,156 30,112" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+            <ellipse cx="140" cy="150" rx="18" ry="8" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+            <!-- 누운 사람 -->
+            <circle cx="44" cy="104" r="11" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+            <polyline points="54,114 104,146 140,136 174,152" fill="none" stroke="#1e293b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 부풀어 오르는 배 모션 -->
+            <ellipse cx="92" cy="130" rx="14" ry="10" fill="#14b8a6" class="anim-belly"/>
+            <text x="96" y="96" text-anchor="middle" fill="#0f766e" font-size="9" font-weight="bold">배만 볼록 4초↑</text>
+            <text x="103" y="180" text-anchor="middle" fill="#334155" font-size="8.5" font-weight="bold">등 뒤 쿠션 + 무릎 밑 베개</text>
+
+            <!-- 우측: 옆으로 누울 때 (왼쪽 아래 + 무릎 사이 베개 + 가슴 앞 안는 베개) -->
+            <rect x="198" y="42" width="110" height="148" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="253" y="56" text-anchor="middle" fill="#0f766e" font-size="9.5" font-weight="bold">② 옆으로 잘 때</text>
+            <text x="253" y="70" text-anchor="middle" fill="#475569" font-size="8.5" font-weight="bold">(아픈 오른쪽이 위로)</text>
+            <!-- 옆으로 누운 모식도 -->
+            <circle cx="232" cy="94" r="10" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+            <!-- 몸통 및 구부린 다리 -->
+            <path d="M236 106 L244 138 L272 146 L256 166" fill="none" stroke="#1e293b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 가슴 앞 안는 쿠션 -->
+            <ellipse cx="264" cy="116" rx="14" ry="9" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+            <text x="264" y="119" text-anchor="middle" fill="#0f766e" font-size="7.5" font-weight="bold">가슴베개</text>
+            <!-- 무릎 사이 베개 -->
+            <ellipse cx="266" cy="152" rx="14" ry="7" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+            <text x="266" y="155" text-anchor="middle" fill="#0f766e" font-size="7.5" font-weight="bold">무릎베개</text>
+            <text x="253" y="180" text-anchor="middle" fill="#334155" font-size="8.5" font-weight="bold">오른팔을 베개 위에 얹기</text>
+
+            <rect x="12" y="198" width="296" height="22" rx="6" fill="#ccfbf1"/>
+            <text x="160" y="213" text-anchor="middle" fill="#0f766e" font-size="10" font-weight="bold">💡 가슴으로 숨 쉬지 말고 배만 풍선처럼 부풀렸다 내쉬면 등 뒤 신경 긴장이 스르륵 풀립니다</text>
           </svg>
         `
       };
@@ -559,259 +894,251 @@
     }
 
     // 4단계 통합 데일리 루틴 데이터 (쉬운 우리말 1·2·3 설명 적용)
-    const dailyRoutines = [
+    const routineSections = [
       {
         id: "morning",
-        title: "🌅 1단계: 아침 기상 루틴 (눈 뜨고 10분)",
-        subtitle: "밤새 굳은 목과 등 주변 근육을 손과 가벼운 움직임으로 먼저 깨웁니다.",
-        tag: "morning",
-        badge: "아침 필수",
+        badge: "🌅 1단계 · 아침 기상 직후 (10분)",
         badgeColor: "bg-amber-100 text-amber-800",
+        title: "자고 일어나 굳은 목·날개뼈 살살 깨우기",
+        subtitle: "아침에는 등뼈를 직접 꺾지 말고, 손가락 마사지와 날개뼈 움직임으로 부드럽게 시작합니다.",
         steps: [
           {
             num: 1,
             name: "1~4번 목·어깨 손가락 마사지",
-            easyTarget: "뭉친 목 근육 풀기",
-            time: "곳당 15초씩 (총 1분)",
-            summary: "목뼈를 꺾지 않고 손가락으로 그림의 ①~④번 위치만 살살 문질러 줍니다.",
+            easyTarget: "굳은 목 근육 풀기",
+            time: "부위당 15초 (총 1분)",
+            timerSec: 60,
+            summary: "손가락 끝 지문으로 그림의 ①→②→③→④번 위치를 살살 문질러 줍니다.",
             details: [
-              "<strong>① 턱 모서리 뒤:</strong> 귀 밑 턱뼈 안쪽 쏙 들어간 곳을 엄지로 지그시 누릅니다.",
-              "<strong>② 귓볼 뒤쪽:</strong> 귀 바로 뒤 불룩한 뼈 아래를 두 손가락으로 둥글게 문지릅니다.",
-              "<strong>③ 뒷목 근육:</strong> 세 손가락으로 목 뒤쪽을 좌우(가로 방향)로 살살 비벼줍니다.",
-              "<strong>④ 옆머리 & 어깨:</strong> 주먹을 살짝 쥐고 귀 위쪽 옆머리와 어깨 위를 가볍게 문지릅니다."
+              "①번(턱 모서리 바로 뒤 오목한 곳): 양손 검지·중지로 지그시 누르며 작은 원을 그립니다.",
+              "②번(귓볼 뒤 볼록한 뼈 바로 아래): 두 손가락으로 가볍게 문질러 목 옆 근육을 풉니다.",
+              "③번(뒷목 근육): 세 손가락을 대고 좌우 가로 방향으로 살살 비벼줍니다.",
+              "④번(귀 위쪽 옆머리 & 어깨 위): 가볍게 주먹을 쥐고 문질러 긴장을 풉니다."
             ],
-            tip: "너무 세게 누르지 마시고 '아프지 않고 시원하다' 싶은 절반(50%)의 힘만 쓰세요.",
-            timerSec: 60
+            tip: "절대 세게 누르지 마세요! 아기 피부를 만지듯 50% 힘으로 살살 문질러야 신경이 놀라지 않습니다."
           },
           {
             num: 2,
-            name: "두턱 만들기 (턱 수평으로 밀어 넣기)",
-            easyTarget: "거북목 교정 & 등 하중 줄이기",
-            time: "5초 유지 × 8회",
-            summary: "앞으로 빠진 머리를 뒤로 집어넣어 등뼈가 받는 머리 무게를 덜어줍니다.",
+            name: "두턱 만들기 (턱 수평으로 당기기)",
+            easyTarget: "일자목·거북목 교정",
+            time: "5초 유지 × 10회",
+            timerSec: 50,
+            summary: "시선은 정면을 본 채, 손가락으로 턱을 서랍 밀어 넣듯 뒤로 쏙 집어넣습니다.",
             details: [
-              "<strong>1단계:</strong> 눈은 정면을 똑바로 바라봅니다 (고개를 숙이면 안 됩니다).",
-              "<strong>2단계:</strong> 검지 손가락을 턱 끝에 대고, 서랍을 밀어 넣듯이 <strong>머리를 뒤로 수평 이동</strong>시킵니다.",
-              "<strong>3단계:</strong> 턱 밑에 살이 접히며(두턱) 뒷목이 팽팽해지면 5초 세고 천천히 힘을 뺍니다."
+              "의자에 바르게 앉아 눈은 정면 멀리를 똑바로 바라봅니다.",
+              "검지 손가락을 턱 끝에 대고, 고개를 숙이지 말고 수평으로 뒤로 밀어 넣습니다.",
+              "턱 밑에 살이 접히며(두턱) 뒷목이 기분 좋게 늘어나는 상태에서 5초간 멈춘 뒤 힘을 뺍니다."
             ],
-            tip: "절대 바닥을 보며 고개를 숙이지 마세요! 눈높이는 그대로 두고 뒤통수만 뒤로 보냅니다.",
-            timerSec: 20
+            tip: "바닥을 보며 고개를 푹 숙이면 목 디스크가 눌립니다. 시선은 무조건 정면 수평을 유지하세요!"
           },
           {
             num: 3,
-            name: "벌새 팔꿈치 원 그리기",
-            easyTarget: "등 날개뼈 주변 담 풀기",
-            time: "작은 원 10바퀴 + 큰 원 10바퀴",
-            summary: "등뼈는 가만히 두고 날개뼈만 부드럽게 굴려 등 뒤 찌릿한 신경 통로를 열어줍니다.",
+            name: "벌새 날개뼈 원 그리기",
+            easyTarget: "등뼈에 붙은 날개뼈 풀기",
+            time: "작은 원 10회 + 큰 원 10회",
+            timerSec: 40,
+            summary: "양손 끝을 어깨 위에 살짝 얹고, 팔꿈치로 공중에 동그라미를 그립니다.",
             details: [
-              "<strong>1단계:</strong> 양손 끝을 양쪽 어깨 위에 가볍게 올립니다.",
-              "<strong>2단계:</strong> 팔꿈치 끝으로 공중에 동전만 한 <strong>작은 원을 그리며 뒤로 10바퀴</strong> 돌립니다.",
-              "<strong>3단계:</strong> 이번엔 팔꿈치로 <strong>큰 원을 그리며 천천히 뒤로 10바퀴</strong> 크게 돌립니다."
+              "양손 손가락 끝을 양쪽 어깨 위에 가볍게 얹습니다.",
+              "팔꿈치 끝으로 앞에서 뒤쪽 방향으로 작은 원을 10바퀴 천천히 그립니다.",
+              "익숙해지면 원을 조금 더 크게 하여 뒤쪽 아래로 10바퀴 부드럽게 돌립니다."
             ],
-            tip: "몸통이나 허리를 흔들지 말고 어깨와 날개뼈만 부드럽게 돌아가게 하세요.",
-            timerSec: 30
+            tip: "원을 그릴 때 등이 뒤로 꺾이거나 가슴을 과하게 내밀지 말고 날개뼈만 부드럽게 움직이세요."
           }
         ]
       },
       {
         id: "daytime",
-        title: "🏢 2단계: 낮·업무 중 틈틈이 루틴 (회당 3분)",
-        subtitle: "의자와 벽만 있으면 어디서든 굽은 등과 어깨를 펴줄 수 있습니다.",
-        tag: "daytime",
-        badge: "수시로 하기",
+        badge: "🏢 2단계 · 낮·업무 중 틈틈이 (3분)",
         badgeColor: "bg-blue-100 text-blue-800",
+        title: "굽은 가슴 펴고 등뼈 누르는 압력 빼주기",
+        subtitle: "문틀이나 철봉 없이도 평평한 벽과 의자만 있으면 어디서든 할 수 있는 안전한 동작입니다.",
         steps: [
           {
             num: 4,
             name: "벽 짚고 앞가슴 열기",
-            easyTarget: "굽은 어깨(라운드숄더) 펴기",
-            time: "20초 유지 × 양쪽 2번씩",
-            summary: "앞으로 말린 가슴 근육을 펴서 등 뒤 날개뼈가 당겨지지 않게 해줍니다.",
+            easyTarget: "말린 어깨(라운드숄더) 펴기",
+            time: "좌·우 각 20초 × 3세트",
+            timerSec: 20,
+            summary: "벽에 팔꿈치를 'ㄴ'자(90도)로 대고 몸통을 반대쪽으로 살짝 돌려 앞가슴을 늘립니다.",
             details: [
-              "<strong>1단계:</strong> 벽 옆에 서서 한쪽 팔을 'ㄴ'자(90도)로 구부려 팔뚝을 벽에 댑니다.",
-              "<strong>2단계:</strong> 벽 쪽 발을 반 걸음 앞으로 딛고, 몸통을 반대쪽으로 살짝 돌립니다.",
-              "<strong>3단계:</strong> 앞가슴이 시원하게 늘어나는 상태에서 숨을 편하게 쉬며 20초간 멈춥니다."
+              "평평한 벽이나 기둥 옆에 서서 한쪽 팔뚝을 90도(ㄴ자)로 구부려 벽에 붙입니다.",
+              "벽 쪽 발을 반 걸음 앞으로 내딛고, 턱은 살짝 당깁니다.",
+              "몸통을 벽 반대쪽으로 천천히 돌리며 앞가슴(쇄골 아래)이 시원하게 펴질 때 20초 유지합니다."
             ],
-            tip: "허리를 앞으로 내밀어 꺾지 마시고, 가슴 앞쪽만 시원하게 늘어나는지 확인하세요.",
-            timerSec: 20
+            tip: "허리를 앞으로 꺾어 배를 내밀면 안 됩니다. 가슴 앞쪽 근육만 기분 좋게 당기도록 유지하세요."
           },
           {
             num: 5,
             name: "T-W 모양으로 팔 벌리기",
-            easyTarget: "등 가운데 힘 기르기",
-            time: "T자 15초 + W자 15초",
-            summary: "팔을 머리 위로 들지 않고도 안전하게 등 뒤 근육을 깨우는 동작입니다.",
+            easyTarget: "등 뒤 날개뼈 근육 깨우기",
+            time: "T자 15초 + W자 15초 × 3세트",
+            timerSec: 30,
+            summary: "양팔을 옆으로 벌려 T자를 만든 뒤, 팔꿈치를 접어 W자로 끌어내립니다.",
             details: [
-              "<strong>1단계 (T자):</strong> 양팔을 옆으로 나란히 벌려 'T'자를 만들고 엄지손가락을 뒤로 돌려 15초 버팁니다.",
-              "<strong>2단계 (W자):</strong> 팔꿈치를 옆구리 쪽으로 접어 내리며 알파벳 'W' 모양을 만듭니다.",
-              "<strong>3단계:</strong> 날개뼈를 바지 뒷주머니 쪽으로 지그시 끌어내리며 15초 버팁니다."
+              "① T자 자세: 손바닥이 앞을 보게 하여 양팔을 수평으로 벌리고 날개뼈를 살짝 모읍니다 (15초).",
+              "② W자 자세: 숨을 내쉬며 팔꿈치를 옆구리 쪽으로 접어 알파벳 'W' 모양을 만듭니다 (15초).",
+              "이때 양쪽 날개뼈를 바지 뒷주머니 방향으로 지그시 끌어내리는 느낌에 집중합니다."
             ],
-            tip: "등을 너무 세게 쥐어짜지 마시고, 날개뼈를 '아래로 낮춘다'는 느낌으로 가볍게 하세요.",
-            timerSec: 30
+            tip: "팔을 머리 위로 바짝 드는 'I자(만세)' 동작은 등이 꺾여 신경이 눌릴 수 있으니 절대 하지 마세요."
           },
           {
             num: 6,
             name: "의자 짚고 어깨 쑥 내리기",
-            easyTarget: "철봉 매달리기 대체 · 등뼈 압력 빼기",
-            time: "10초 유지 × 3회",
-            summary: "위험한 철봉 매달리기 대신, 의자에서 손의 힘으로 등뼈에 실린 무게를 덜어줍니다.",
+            easyTarget: "위험한 철봉 매달리기 완벽 대체",
+            time: "10초 유지 × 5회",
+            timerSec: 50,
+            summary: "앉은 채로 양손으로 의자 바닥을 밀어내어 등뼈에 실린 체중 압력을 안전하게 뺍니다.",
             details: [
-              "<strong>1단계:</strong> 의자에 앉아 양손으로 엉덩이 옆 의자 바닥(또는 팔걸이)을 짚습니다.",
-              "<strong>2단계:</strong> 손바닥으로 의자를 아래로 지그시 밀면서 어깨를 바닥 쪽으로 쑥 내립니다.",
-              "<strong>3단계:</strong> 정수리는 천장으로 길어지고 등뼈 사이가 시원하게 펴지는 느낌으로 10초간 숨을 쉽니다."
+              "의자에 앉아 발바닥은 바닥에 편안히 붙이고, 양손으로 의자 좌판 양옆을 잡습니다.",
+              "양손으로 의자 바닥을 아래로 지그시 밀면서 어깨를 귀에서 멀어지게 내립니다.",
+              "엉덩이는 의자에서 안 떨어질 만큼만 가볍게 힘을 빼고 정수리를 천장으로 세워 10초간 유지합니다."
             ],
-            tip: "엉덩이를 의자에서 번쩍 들 필요 없습니다! 손으로 의자만 밀어 등만 펴주면 충분합니다.",
-            timerSec: 20
+            tip: "철봉에 매달리면 83kg 체중이 내려올 때 등뼈를 강하게 짓누릅니다. 이 동작으로 안전하게 감압하세요."
           }
         ]
       },
       {
         id: "evening",
-        title: "🏃‍♂️ 3단계: 저녁 홈트 & 걷기 운동 (45분)",
-        subtitle: "집에서 10분간 등 근육을 깨운 뒤, 밖에서 충격 없이 걸으며 살을 뺍니다.",
-        tag: "evening",
-        badge: "다이어트 & 코어",
+        badge: "🏃‍♂️ 3단계 · 저녁 홈트 & 유산소 (45분)",
         badgeColor: "bg-indigo-100 text-indigo-800",
+        title: "등 속근육 코어 채우고 충격 없이 체지방 태우기",
+        subtitle: "매트 위에서 등 근육 지지대를 먼저 세운 뒤, 밖으로 나가 빠른 걸음으로 살을 뺍니다.",
         steps: [
           {
             num: 7,
-            name: "네발기기 고양이 등 말기",
+            name: "네발기기 고양이 등 말기 (중립 복귀)",
             easyTarget: "등뼈 마디마디 부드럽게 풀기",
-            time: "천천히 10회 반복",
-            summary: "바닥에 엎드려 등을 천장 쪽으로 둥글게 말아 등 뒤 긴장을 풀어줍니다.",
+            time: "10회 × 2세트",
+            timerSec: 45,
+            summary: "네발기기 자세에서 등을 천장으로 둥글게 말았다가 '평평한 일자'까지만 돌아옵니다.",
             details: [
-              "<strong>1단계:</strong> 바닥에 양손과 양무릎을 대고 강아지처럼 네발로 엎드립니다.",
-              "<strong>2단계 (고양이 등):</strong> 후- 숨을 내쉬며 배꼽을 바라보고 등을 천장 쪽으로 둥글게 말아 올립니다 (3초).",
-              "<strong>3단계 (일자 복귀):</strong> 숨을 마시며 등을 식탁처럼 평평한 일자 상태까지만 되돌립니다."
+              "양손은 어깨 아래, 무릎은 골반 아래에 두고 엎드립니다.",
+              "① 숨을 내쉬며 배꼽을 바라보고 날개뼈 사이 등을 천장 쪽으로 둥글게 말아 올립니다 (3초).",
+              "② 숨을 들이마시며 등을 식탁처럼 '평평한 일직선' 상태까지만 되돌립니다."
             ],
-            tip: "주의! 허리와 배를 바닥 쪽으로 푹 꺼뜨리는 동작은 등 신경을 찌르니 절대 하지 마세요.",
-            timerSec: 30
+            tip: "배를 바닥으로 푹 꺼뜨리며 허리와 등을 아래로 꺾는 '소 자세'는 신경이 다시 찝히므로 절대 금지!"
           },
           {
             num: 8,
-            name: "벽 천사 운동 (벽에 등 대고 팔 쓸어올리기)",
-            easyTarget: "등 속근육 만드는 최고의 재활 운동",
+            name: "벽 천사 운동 (Wall Angel)",
+            easyTarget: "등 깊은 속근육 강화 1순위",
             time: "10회 × 3세트",
-            summary: "벽에 등을 붙이고 팔을 위아래로 움직여 척추를 받쳐주는 속근육을 만듭니다.",
+            timerSec: 60,
+            summary: "벽에 등·뒤통수를 붙이고 서서 양팔을 W자에서 V자로 천천히 쓸어 올립니다.",
             details: [
-              "<strong>1단계:</strong> 벽에 뒤통수, 등, 엉덩이를 붙이고 섭니다 (발은 벽에서 한 뼘 앞에 둡니다).",
-              "<strong>2단계:</strong> 양팔을 'W' 모양으로 벽에 붙인 뒤, 천천히 'V' 모양으로 벽을 타고 쓸어 올립니다.",
-              "<strong>3단계:</strong> 등이나 허리가 벽에서 떨어지지 않는 높이까지만 올렸다가 다시 W자로 내려옵니다."
+              "벽에 뒤통수·등·엉덩이를 붙이고 서되, 발뒤꿈치는 벽에서 한 뼘(15cm) 앞으로 둡니다.",
+              "양팔을 'W'자로 구부려 손등과 팔꿈치를 벽에 붙입니다.",
+              "등과 허리가 벽에서 안 떨어지는 높이까지만 팔을 'V'자로 천천히 올렸다가 내립니다."
             ],
-            tip: "팔을 올릴 때 어깨가 귀 쪽으로 으쓱 올라가지 않게 계속 낮춰주세요.",
-            timerSec: 30
+            tip: "팔을 올릴 때 어깨가 으쓱 올라가거나 허리가 벽에서 뜨면, 뜨기 직전 높이까지만 올리세요."
           },
           {
             num: 9,
-            name: "버드독 (엎드려 팔다리 교차 뻗기)",
-            easyTarget: "흔들리지 않는 척추 기둥 만들기",
-            time: "좌우 번갈아 8회 × 3세트",
-            summary: "네발로 엎드려 팔과 다리를 앞뒤로 뻗으며 등과 코어의 버티는 힘을 길러줍니다.",
+            name: "버드독 (팔다리 교차 수평 뻗기)",
+            easyTarget: "척추 흔들림 막는 코어 근육",
+            time: "좌·우 교대 8회 × 3세트",
+            timerSec: 60,
+            summary: "네발기기에서 등은 평평하게 고정한 채 오른팔과 왼다리를 앞뒤 수평으로 뻗습니다.",
             details: [
-              "<strong>1단계:</strong> 네발기기 자세에서 배에 살짝 힘을 주어 등이 흔들리지 않게 잡습니다.",
-              "<strong>2단계:</strong> <strong>오른팔은 앞으로, 왼쪽 다리는 뒤로</strong> 바닥과 수평이 되게 쭉 뻗어 3초 버팁니다.",
-              "<strong>3단계:</strong> 제자리로 돌아온 뒤, 반대쪽(왼팔 + 오른다리)도 똑같이 3초 뻗어줍니다."
+              "네발기기 자세에서 아랫배에 살짝 힘을 주어 등이 흔들리지 않게 고정합니다.",
+              "오른팔은 앞쪽 벽을 찌르듯, 왼다리는 뒤쪽 벽을 밀듯 바닥과 수평으로 길게 뻗어 3초 멈춥니다.",
+              "천천히 제자리로 돌아온 뒤, 왼팔과 오른다리를 교대로 똑같이 뻗습니다."
             ],
-            tip: "팔다리를 하늘 높이 들면 허리가 꺾입니다! 위로 들지 말고 '앞뒤 벽을 찌른다'는 느낌으로 수평만 유지하세요.",
-            timerSec: 30
+            tip: "팔다리를 위로 높이 들면 등이 꺾여 아픕니다! 무조건 '수평 높이'로 길게 뻗는 데만 집중하세요."
           },
           {
             num: 10,
-            name: "보폭 좁혀 빠르게 걷기 (인터벌 워킹)",
-            easyTarget: "등 충격 없이 83kg → 77kg 체지방 태우기",
-            time: "야외 35~40분",
-            summary: "뛰지 않고 걸음 속도만 빠르게 조절하여 등뼈 충격 없이 살을 뺍니다.",
+            name: "야외 무충격 인터벌 빠른 걷기",
+            easyTarget: "83kg → 77kg 체중 감량 유산소",
+            time: "35~40분 (빠르게 4분 + 보통 2분 반복)",
+            timerSec: 240,
+            summary: "절대 뛰거나 보폭을 넓히지 말고, 평소 보폭으로 발걸음 회전수만 빠르게 걷습니다.",
             details: [
-              "<strong>1단계 (보폭 줄이기):</strong> 성큼성큼 넓게 걷지 말고, 평소 보폭으로 종종걸음 치듯 빠르게 걷습니다.",
-              "<strong>2단계 (팔 흔들기):</strong> 팔꿈치를 90도로 가볍게 접고 앞뒤로 리듬감 있게 흔듭니다.",
-              "<strong>3단계 (인터벌):</strong> <strong>[숨이 살짝 찰 정도로 빠르게 걷기 4분] + [천천히 걷기 2분]</strong>을 6번 반복합니다."
+              "시선은 15m 앞을 보고 팔꿈치를 90도로 접어 앞뒤로 경쾌하게 흔듭니다.",
+              "[빠르게 걷기 4분]: 보폭은 평소대로 두고 발걸음 속도만 높여 약간 숨이 차게 걷습니다.",
+              "[보통 걷기 2분]: 호흡을 고르며 편안하게 걷습니다. (이 과정을 5~6회 반복)"
             ],
-            tip: "스마트폰을 보며 고개를 숙이고 걷지 마시고, 15m 앞 먼 바닥을 보며 걸으세요.",
-            timerSec: 60
+            tip: "보폭을 넓혀 성큼성큼 걸으면 발뒤꿈치 충격이 등뼈까지 올라옵니다. 종종걸음처럼 회전수를 높이세요."
           }
         ]
       },
       {
         id: "bedtime",
-        title: "🌙 4단계: 잠들기 전 호흡 & 베개 세팅 (10분)",
-        subtitle: "잘 때 등 신경이 눌리지 않게 베개를 세팅하고 배 호흡으로 몸을 이완합니다.",
-        tag: "bedtime",
-        badge: "숙면 & 회복",
+        badge: "🌙 4단계 · 잠들기 전 (10분)",
         badgeColor: "bg-teal-100 text-teal-800",
+        title: "신경 긴장 끄고 안 아픈 자세로 숙면하기",
+        subtitle: "가슴이 아닌 배로 숨을 쉬어 등 신경을 진정시키고, 베개로 척추 압박을 없앱니다.",
         steps: [
           {
             num: 11,
-            name: "배 풍선 호흡 & 안 아픈 수면 베개 세팅",
-            easyTarget: "자면서 등 눌림 완벽 방지",
+            name: "배 풍선 호흡 & 무통 수면 베개 세팅",
+            easyTarget: "늑간신경 안정 및 야간 통증 예방",
             time: "호흡 5분 후 바로 취침",
-            summary: "가슴 대신 배로 숨을 쉬어 갈비뼈 긴장을 풀고, 등이 안 눌리는 각도로 누워 잡니다.",
+            timerSec: 60,
+            summary: "배만 풍선처럼 부풀리는 호흡을 5분간 한 뒤, 등이 눌리지 않게 베개를 받쳐 잡니다.",
             details: [
-              "<strong>1단계 (베개 세팅):</strong> 똑바로 누울 땐 <strong>등 뒤에 베개를 겹쳐 살짝 기대고 무릎 밑에 베개</strong>를 받칩니다. (옆으로 잘 땐 왼쪽이 바닥에 가게 눕고 무릎 사이와 가슴 앞에 베개를 안습니다.)",
-              "<strong>2단계 (숨 마시기 4초):</strong> 배 위에 손을 얹고 코로 숨을 마시며 배만 풍선처럼 볼록하게 부풀립니다.",
-              "<strong>3단계 (숨 내쉬기 6초):</strong> 입으로 '후-' 가늘고 길게 내쉬며 배를 쏙 집어넣습니다."
+              "① 배 풍선 호흡: 가슴은 가만히 두고 코로 4초간 숨을 마시며 배만 부풀렸다가, 입으로 6초간 길게 내쉽니다.",
+              "② 똑바로 잘 때: 등 뒤에 푹신한 쿠션을 완만하게 받치고 무릎 아래에 베개를 괴어 등 압박을 뺍니다.",
+              "③ 옆으로 잘 때: 아프지 않은 왼쪽을 아래로 두고 눕고, 무릎 사이와 가슴 앞에 베개를 하나씩 안고 잡니다."
             ],
-            tip: "정자세로 자려고 애쓰지 마세요! 누웠을 때 등이 1도 안 아픈 베개 높이가 정답입니다.",
-            timerSec: 60
+            tip: "잠자리에서 일어날 때는 상체 힘으로 벌떡 일어나지 말고, 옆으로 돌아누운 뒤 팔로 바닥을 짚고 일어나세요."
           }
         ]
       }
     ];
 
-    // 상태 관리
     let currentFilter = "all";
     let timerInterval = null;
     let timerSecondsLeft = 30;
     let isTimerRunning = false;
 
-    // 초기화
     function init() {
       renderRoutines();
       loadChecklistState();
-      lucide.createIcons();
       attachEvents();
+      lucide.createIcons();
     }
 
-    // 루틴 카드 렌더링 (일러스트 + 쉬운 설명 결합)
     function renderRoutines() {
       const container = document.getElementById("routineContainer");
       container.innerHTML = "";
 
-      const filtered = currentFilter === "all" 
-        ? dailyRoutines 
-        : dailyRoutines.filter(r => r.tag === currentFilter);
+      const filtered = currentFilter === "all"
+        ? routineSections
+        : routineSections.filter(s => s.id === currentFilter);
 
       filtered.forEach(section => {
         const sectionCard = document.createElement("div");
-        sectionCard.className = "bg-white rounded-3xl p-4 sm:p-6 border border-slate-200/80 shadow-sm space-y-5";
+        sectionCard.className = "bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm space-y-5";
 
         let stepsHtml = "";
         section.steps.forEach(s => {
-          const detailList = s.details.map(d => `
+          const svgIllustration = getExerciseSVG(s.num);
+          const detailList = s.details.map((d, idx) => `
             <li class="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-relaxed">
-              <span class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0"></span>
+              <span class="w-4 h-4 rounded-full bg-teal-100 text-teal-800 font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
               <span>${d}</span>
             </li>
           `).join("");
-
-          const svgIllustration = getExerciseSVG(s.num);
 
           stepsHtml += `
             <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/90 border border-slate-200/70 hover:border-teal-300 transition-all">
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-center">
                 
-                <!-- 좌측: 시각적 일러스트 도해 영역 (5 cols) -->
-                <div class="md:col-span-5 flex flex-col items-center">
-                  <div class="w-full max-w-[270px] aspect-[13/10] rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-inner">
+                <!-- 좌측: 고디테일 모션 일러스트 도해 영역 (6 cols로 확장하여 시인성 강화) -->
+                <div class="md:col-span-6 flex flex-col items-center">
+                  <div class="w-full aspect-[32/23] rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
                     ${svgIllustration}
                   </div>
-                  <button onclick="applyTimerAndScroll(${s.timerSec}, '${s.num}번: ${s.name}')" class="mt-2.5 w-full max-w-[270px] py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-colors">
+                  <button onclick="applyTimerAndScroll(${s.timerSec}, '${s.num}번: ${s.name}')" class="mt-2.5 w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-colors">
                     <i data-lucide="play-circle" class="w-4 h-4"></i>
                     <span>${s.timerSec}초 타이머 시작하기</span>
                   </button>
                 </div>
 
-                <!-- 우측: 쉬운 단계별 텍스트 설명 영역 (7 cols) -->
-                <div class="md:col-span-7 space-y-3">
+                <!-- 우측: 쉬운 단계별 텍스트 설명 영역 (6 cols) -->
+                <div class="md:col-span-6 space-y-3">
                   <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/70 pb-2">
                     <div class="flex items-center gap-2">
                       <span class="w-7 h-7 rounded-xl bg-teal-700 text-white text-xs font-extrabold flex items-center justify-center shrink-0">
