@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>등 통증 데일리 루틴</title>
+<style>
+:root{--bg:#f6f7f4;--card:#fff;--ink:#1d2a24;--mute:#66736b;--line:#dfe4de;--accent:#2f7d5b;--accent-soft:#e3f2ea;--warn:#b4412b;--warn-soft:#fbeae5;--gun:#3b5ba5;--gun-soft:#e8edf8}
+@media (prefers-color-scheme:dark){:root{--bg:#141a17;--card:#1d2621;--ink:#e8efea;--mute:#98a89f;--line:#2f3b34;--accent:#5fc496;--accent-soft:#1f3a2e;--warn:#f08a74;--warn-soft:#3a2420;--gun:#8fa9ee;--gun-soft:#222c46}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI","Malgun Gothic",sans-serif;padding:0 16px 80px}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-size:1.5rem;margin:24px 0 4px}
+.sub{color:var(--mute);margin:0 0 16px;font-size:.92rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+.warn{background:var(--warn-soft);border-color:var(--warn)}
+.warn b{color:var(--warn)}
+h2{font-size:1.15rem;margin:0 0 8px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 2px;text-align:center;cursor:pointer;font-size:.85rem;color:var(--ink);min-height:54px}
+.day small{display:block;color:var(--mute);font-size:.68rem}
+.day.done{background:var(--accent-soft);border-color:var(--accent)}
+.day.sel{outline:2px solid var(--accent)}
+.day.today{font-weight:700}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+button,a.btn{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;padding:6px 12px;text-decoration:none;display:inline-block;font-size:.9rem}
+button.ghost,a.btn.ghost{background:transparent;color:var(--accent)}
+a.btn.yt{background:#c4302b;border-color:#c4302b;color:#fff}
+.slot{margin:24px 0 6px;font-size:1.1rem;color:var(--accent);font-weight:700}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;overflow:hidden}
+.ex.done{opacity:.6}
+.ex>.top{display:flex;gap:10px;padding:12px;align-items:center}
+.ex input[type=checkbox]{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.ex .t{flex:1;cursor:pointer}
+.ex .t b{display:block}
+.ex .t span{color:var(--mute);font-size:.85rem}
+.tag{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:99px;background:var(--gun-soft);color:var(--gun);margin-left:6px}
+.det{display:none;padding:0 14px 14px 46px;font-size:.93rem}
+.ex.open .det{display:block}
+.det ol{margin:4px 0 8px;padding-left:18px}
+.det .no{background:var(--warn-soft);color:var(--warn);padding:6px 10px;border-radius:8px;margin-top:6px}
+.feel{display:grid;gap:4px;margin:4px 0 8px;font-size:.88rem}.feel .ok{color:var(--accent)}.feel .bad{color:var(--warn)}
+.kw{margin:10px 0 4px;font-weight:600;font-size:.88rem}
+.kws{display:flex;flex-wrap:wrap;gap:6px}
+.vid{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.vid input{flex:1;min-width:180px;font:inherit;font-size:.85rem;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.player{margin-top:8px;max-width:560px}
+.player .ratio{position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.det .tm{margin-top:10px}
+#timer{position:fixed;right:12px;bottom:12px;background:var(--card);border:1px solid var(--accent);border-radius:14px;padding:10px 14px;display:none;box-shadow:0 4px 16px #0003;min-width:150px;text-align:center}
+#timer .n{font-size:2rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>등 통증 데일리 루틴</h1>
+<p class="sub">173cm / 83kg · 오른쪽 날개뼈 사이 · 도구: 요가매트, ㄷ자 마사지건 · 통증 없는 범위에서만</p>
+
+<div class="box warn"><b>멈추고 병원에 가야 하는 신호:</b> 가슴 통증 + 호흡곤란/식은땀, 팔·다리 저림이나 힘 빠짐, 대소변 이상, 가만히 있어도 심해지는 밤 통증. 운동 중 찌릿하거나 "화-" 한 느낌이 나면 그 동작은 바로 중단하세요. 이 앱은 의학적 진단이 아닙니다.</div>
+
+<div class="box">
+  <h2>처음 스트레칭하는 분께</h2>
+  <ul style="margin:0;padding-left:18px">
+    <li><b>1~3일차는 6개 동작만</b> 나옵니다. 4일차부터 전체 루틴이 열려요.</li>
+    <li>구성은 <b>평소 스트레칭</b>(하루 2~3번, 회당 3분)과 <b>저녁 운동</b>(약 40분) 두 가지입니다.</li>
+    <li>각 동작의 <b>"YouTube에서 찾기"</b> 버튼으로 검색 결과가 열립니다. 마음에 드는 영상을 찾으면 링크를 붙여 넣어 이 화면에서 바로 볼 수 있어요.</li>
+    <li>통증 0~10점 중 <b>3점 이하</b>의 시원한 당김만. 찌릿·저림·콕콕 찌름은 즉시 중단.</li>
+    <li>숨은 참지 말고 반동 없이 천천히. 처음엔 횟수·시간의 <b>절반</b>만 해도 충분합니다.</li>
+  </ul>
+</div>
+
+<div class="box">
+  <div class="row"><h2 id="phase">4주 달력</h2><button class="ghost" id="reset">시작일을 오늘로 초기화</button></div>
+  <div class="cal" id="cal"></div>
+  <div class="bar"><i id="totalBar"></i></div>
+  <div class="sub" id="totalTxt" style="margin-top:6px"></div>
+</div>
+
+<div class="box">
+  <div class="row"><h2 id="dayTitle"></h2><span id="dayProg" class="sub"></span><button class="ghost" id="tgl">설명 접기/펼치기</button></div>
+  <div class="bar"><i id="dayBar"></i></div>
+  <div class="sub" id="weekGoal" style="margin-top:8px"></div>
+</div>
+
+<div id="list"></div>
+
+<div class="box">
+  <h2>윗가슴·엉덩이도 풀어야 하나요?</h2>
+  <p style="margin:0">네. 일자목/거북목이면 <b>윗가슴이 짧아져</b> 어깨가 말리고 등 사이 근육이 계속 늘어난 채 버팁니다. 엉덩이는 등 통증의 직접 원인은 아니지만, 앉아 지내면 약해져 <b>등이 대신 일하는 보상</b>이 생기고 걷기 효율에도 영향을 줍니다. 그래서 루틴에 둘 다 포함했습니다.</p>
+</div>
+
+<div class="box">
+  <h2>ㄷ자 마사지건 규칙</h2>
+  <table>
+    <tr><th>해도 되는 곳</th><td>등 척추 양옆 근육(ㄷ자 홈에 척추를 끼워 지나가기), 상부 승모근, 윗가슴 살 부분, 엉덩이, 허벅지</td></tr>
+    <tr><th>피할 곳</th><td>척추뼈 돌기 위, 날개뼈 모서리·갈비뼈 뼈 부분, 목 앞/옆(혈관), 머리, 찌릿한 신경 통증 부위</td></tr>
+    <tr><th>방법</th><td>1~2단계, 부위당 30~60초, 힘주지 않고 천천히 이동. 따뜻할 때(샤워 후) 효과적</td></tr>
+  </table>
+</div>
+
+<div class="box">
+  <h2>하지 말 것</h2>
+  <ul style="margin:0;padding-left:18px">
+    <li>철봉 매달리기·턱걸이, 머리 위 무거운 무게</li>
+    <li>폼롤러로 등 꺾기, 엎드려 상체 젖히기, 등 비틀어 "우두둑"</li>
+    <li>뛰기·점프 (체중 감량 초기엔 걷기로)</li>
+    <li>아픈 자세 참고 버티기</li>
+  </ul>
+</div>
+</div>
+
+<div id="timer"><div class="sub" id="tName"></div><div class="n" id="tNum">0</div><button class="ghost" onclick="stopTimer()">닫기</button></div>
+
+<script>
+const S1='평소 스트레칭 · 틈틈이 (회당 약 3분, 하루 2~3번)';
+const S2='저녁 운동 · 마사지건 → 매트 → 걷기 (약 40분)';
+// q: YouTube 검색 키워드
+const EX=[
+ {id:'m1',slot:S1,t:'목 부위 손가락 마사지 4곳',dose:'각 20~30초',sec:30,q:['목 후두하근 마사지 셀프 거북목','귀 뒤 흉쇄유돌근 이완 마사지 방법'],
+  steps:['턱뼈 뒤 오목한 곳을 손가락 끝으로 지그시 원을 그리며','귓볼 뒤 두개골 모서리 아래를 두 손가락으로','목덜미 근육을 세 손가락으로 가로로 비비기','옆머리(귀 위)와 승모근을 주먹·손끝으로 앞뒤로 비비기'],
+  feel:['손가락 밑이 뻐근하게 시원한 정도','찌릿하거나 어지러움 · 팔로 저림이 퍼짐'],no:'목 앞쪽(경동맥)은 누르지 않기. 세게 누르지 말고 지문으로 부드럽게.'},
+ {id:'m2',slot:S1,t:'두턱 만들기 (Chin-Tuck)',dose:'5초 × 10회',sec:5,q:['친턱 운동 거북목 교정','chin tuck 두턱 만들기 목 운동'],
+  steps:['등을 세우고 앉거나 벽에 기대 선다','시선은 정면 고정','서랍을 밀어 넣듯 뒤통수를 수평으로 뒤로 이동 (두턱이 생김)','5초 유지 후 천천히 풀기'],
+  feel:['목 뒤쪽이 가볍게 당기는 느낌','목 앞이 아프거나 턱을 숙이게 됨'],no:'고개를 아래로 숙이면 안 됩니다. 수평 이동만.'},
+ {id:'m3',slot:S1,t:'벌새 날개뼈 롤링',dose:'작은 원 10회 + 큰 원 10회',sec:0,q:['날개뼈 풀기 팔꿈치 원 그리기 어깨 운동','견갑골 가동성 운동 라운드숄더'],
+  steps:['손끝을 어깨에 얹고 팔꿈치를 옆으로','팔꿈치로 작은 원을 뒤쪽으로 10회','원을 크게 키워 10회','등을 꺾지 말고 날개뼈만 미끄러지게'],
+  feel:['날개뼈가 등 위에서 미끄러지는 느낌','어깨가 귀로 올라감 · 등을 꺾게 됨'],no:'어깨가 귀로 올라가지 않게.'},
+ {id:'d1',slot:S1,t:'벽/코너 가슴 열기',dose:'20~30초 × 양쪽 2~3회',sec:30,q:['벽 가슴 스트레칭 소흉근 라운드숄더','도어웨이 가슴 스트레칭 방법'],
+  steps:['벽 모서리에 팔꿈치를 90도(ㄴ자)로 대고','같은 쪽 발을 한 걸음 앞으로','상체를 반대쪽으로 천천히 돌려 앞가슴이 늘어나게','호흡은 편하게 이어가기'],
+  feel:['앞가슴이 늘어나는 시원함','어깨 앞이 찌릿하거나 팔이 저림'],no:'어깨가 앞으로 말리거나 허리가 꺾이면 범위를 줄이세요.'},
+ {id:'d2',slot:S1,t:'T-W 날개뼈 리셋',dose:'10회 (각 3초 유지)',sec:0,q:['TWY 운동 라운드숄더 날개뼈','T W 견갑골 운동 거북목'],
+  steps:['팔을 옆으로 T자로 벌려 날개뼈를 살짝 모으기','팔꿈치를 접어 W자로, 날개뼈를 뒷주머니 쪽으로 내리기','천천히 T로 되돌리기'],
+  feel:['날개뼈 사이가 살짝 모이는 느낌','목·승모근이 뭉침 · 허리가 뜸'],no:'머리 위로 뻗는 I(만세) 동작은 하지 않기. 허리가 뜨면 중단.'},
+ {id:'d3',slot:S1,t:'의자 날개뼈 내리기',dose:'5초 × 8회',sec:5,q:['승모근 긴장 풀기 어깨 내리기 운동','견갑골 하강 운동 사무실 스트레칭'],
+  steps:['의자에 앉아 손바닥으로 의자 좌판 옆을 누른다','어깨를 귀에서 멀어지게 아래로 끌어내린다','5초 유지 후 이완'],
+  feel:['어깨가 귀에서 멀어져 목이 길어지는 느낌','목이 앞으로 빠짐'],no:'목이 앞으로 빠지지 않게 턱 살짝 당기기.'},
+ {id:'e1',slot:S2,t:'마사지건: 윗가슴 · 승모근 · 등 양옆 · 엉덩이',dose:'부위당 30~60초 (총 5~8분)',sec:60,gun:true,q:['마사지건 등 승모근 사용법 척추 피하기','마사지건 대둔근 가슴 마사지 방법'],
+  steps:['윗가슴: 빗장뼈 아래 살 부분을 천천히 (뼈 위는 피하기)','상부 승모근: 목과 어깨 사이 근육','등: ㄷ자 홈에 척추를 끼우고 양옆 근육을 아래로 천천히','엉덩이: 골반 위쪽~엉덩이 바깥 근육'],
+  feel:['근육이 풀리며 따뜻해지는 느낌','찌릿함 · 숨 쉴 때 통증 증가 · 뼈 위를 누르게 됨'],no:'1~2단계로. 찌릿하거나 숨 쉴 때 통증이 늘면 중단. 날개뼈 뼈 모서리·척추뼈 위 금지.'},
+ {id:'e2',slot:S2,t:'고양이-중립',dose:'8~10회',sec:0,q:['캣카우 고양이 자세 올바른 방법 흉추','cat cow 등 가동성 초보'],
+  steps:['네발 자세 (손은 어깨 아래, 무릎은 골반 아래)','숨 내쉬며 등을 천장 쪽으로 둥글게','숨 들이쉬며 등이 평평한 중립까지만 복귀'],
+  feel:['등 전체가 부드럽게 늘어났다 줄어드는 느낌','어깨/손목 통증 · 배를 꺼뜨려 허리가 꺾임'],no:'배를 꺼뜨리며 등을 꺾는 소 자세 금지.'},
+ {id:'e3',slot:S2,t:'벽 천사 (Wall Angel)',dose:'8~10회 × 2세트',sec:0,q:['월엔젤 wall angel 운동 방법','벽천사 라운드숄더 교정 운동'],
+  steps:['발을 벽에서 한 뼘 앞에 두고 뒤통수·등·엉덩이를 벽에 붙임','팔꿈치를 W자로 벽에 대고','천천히 V자로 올렸다가 W로 복귀'],
+  feel:['날개뼈 사이와 어깨 뒤가 약하게 힘이 들어감','허리가 뜸 · 손등이 벽에서 떨어짐'],no:'허리가 뜨거나 아프면 범위를 줄이거나 중단.'},
+ {id:'e4',slot:S2,t:'버드독',dose:'좌우 8회 × 2세트',sec:0,q:['버드독 운동 방법 허리 안 아프게','bird dog 코어 초보 자세'],
+  steps:['네발 자세에서 배에 힘','오른팔 + 왼다리를 수평으로 뻗고 2초 유지','번갈아 반복'],
+  feel:['배·엉덩이·등 근육에 은은한 힘','허리가 꺾이거나 몸이 좌우로 흔들림'],no:'다리를 높이 들어 허리를 꺾지 않기. 수평까지만.'},
+ {id:'e5',slot:S2,t:'글루트 브릿지',dose:'12회 × 2세트',sec:0,q:['글루트 브릿지 방법 엉덩이 자극','힙브릿지 허리 아프지 않게'],
+  steps:['누워서 무릎을 세우고','엉덩이를 들어 어깨-엉덩이-무릎 일직선','엉덩이 힘으로 올리고 천천히 내리기'],
+  feel:['엉덩이에 힘이 들어감','허리/햄스트링에만 힘이 들어감 · 허리 통증'],no:'허리로 들지 말고 엉덩이 힘으로. 너무 높이 올려 허리 꺾지 않기.'},
+ {id:'e6',slot:S2,t:'누워서 4자 엉덩이 스트레칭',dose:'30초 × 양쪽',sec:30,q:['누워서 4자 스트레칭 이상근 엉덩이','figure 4 stretch 엉덩이 스트레칭'],
+  steps:['누워서 무릎을 세우고','오른발목을 왼무릎 위에 얹기 (4자)','왼허벅지 뒤를 잡아 가슴 쪽으로'],
+  feel:['엉덩이 바깥이 늘어나는 당김','무릎 안쪽이 아픔'],no:'무릎이 아프면 범위를 줄이세요.'},
+ {id:'e7',slot:S2,t:'아기 자세 (팔 앞으로)',dose:'30~60초',sec:45,q:['아기 자세 차일드 포즈 등 스트레칭','child pose 올바른 방법 초보'],
+  steps:['무릎 꿇고 앉아 엉덩이를 뒤꿈치 쪽으로','팔을 앞으로 뻗어 이마를 매트에','편하게 호흡'],
+  feel:['등과 옆구리가 편안하게 늘어남','무릎이나 발목이 아픔'],no:'무릎이나 등에 통증이 오면 베개를 가슴 밑에.'},
+ {id:'e8',slot:S2,t:'오픈북 (누워서 가슴 회전)',dose:'좌우 6회 (작은 범위)',sec:0,week:3,q:['오픈북 스트레칭 흉추 회전','thoracic open book 흉추 가동성'],
+  steps:['옆으로 누워 무릎을 90도로 포개고 팔은 앞으로','위쪽 팔을 천천히 열며 시선도 따라가기','통증 없는 범위까지만'],
+  feel:['가슴·등 윗부분이 천천히 열리는 느낌','찌르는 통증 · 숨쉬기 불편'],no:'3주차 이후, 통증·걸림이 없을 때만. 억지로 돌리지 않기.'},
+ {id:'e9',slot:S2,t:'인터벌 파워워킹',dose:'1주 20분 / 2주 30분 / 3~4주 35~40분',sec:0,q:['인터벌 걷기 다이어트 초보 30분','파워워킹 올바른 자세 속보'],
+  steps:['평지에서 시작','3분 빠르게(보폭은 좁게, 걸음 수 높게) + 2분 보통 속도 반복','팔은 90도로 자연스럽게 흔들기'],
+  feel:['숨이 약간 차지만 대화 가능한 정도','등 통증 증가 · 숨쉴 때 찌름'],no:'뛰지 않기. 통증이 오면 일반 걷기로 낮추기.'}
+];
+const CORE=['m2','m3','d1','d3','e2','e7'];
+const WEEK_GOAL=[
+ '1주차: 통증 안정 + 습관 만들기. 평소 스트레칭과 가벼운 걷기(20분)부터.',
+ '2주차: 가동성 + 코어 활성. 저녁 매트 운동 정착, 걷기 30분.',
+ '3주차: 근력 + 유산소. 오픈북 추가(통증 없을 때), 걷기 35~40분.',
+ '4주차: 정착 + 평가. 전체 완주하고 통증·체중 변화를 기록, 필요하면 재진료.'
+];
+// ---- 상태 ----
+const $=s=>document.querySelector(s);
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+let mem={};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}};
+let start=store.get('rt_start')||iso(new Date());
+store.set('rt_start',start);
+let checks={};try{checks=JSON.parse(store.get('rt_checks')||'{}')}catch(e){}
+let vids={};try{vids=JSON.parse(store.get('rt_vids')||'{}')}catch(e){}
+const addDays=(s,n)=>{const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return d};
+let allOpen=true;
+let sel=Math.min(27,Math.max(0,Math.round((new Date(iso(new Date())+'T00:00:00')-new Date(start+'T00:00:00'))/864e5)));
+const exFor=w=>EX.filter(e=>!e.week||w>=e.week);
+const exDay=i=>exFor(Math.floor(i/7)+1).filter(e=>i>=3||CORE.includes(e.id));
+const save=()=>store.set('rt_checks',JSON.stringify(checks));
+const ytId=u=>{const m=(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null};
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function playerHtml(id){const v=vids[id];const y=ytId(v);if(!y)return '';
+  return `<div class="player"><div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/${y}" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div style="margin-top:6px"><a class="btn ghost" href="${esc(v)}" target="_blank" rel="noopener">YouTube에서 열기</a> <button class="ghost" data-clear="${id}">영상 삭제</button></div></div>`}
+function render(){
+  const w=Math.floor(sel/7)+1, list=exDay(sel), key=iso(addDays(start,sel)), c=checks[key]||{};
+  const cal=$('#cal');cal.innerHTML='';
+  for(let i=0;i<28;i++){
+    const d=addDays(start,i),k=iso(d),cc=checks[k]||{},n=exDay(i).length,done=Object.values(cc).filter(Boolean).length;
+    const b=document.createElement('button');
+    b.className='day'+(done>=n?' done':'')+(i===sel?' sel':'')+(k===iso(new Date())?' today':'');
+    b.innerHTML=`${i+1}일<small>${d.getMonth()+1}/${d.getDate()}</small><small>${Math.min(done,n)}/${n}</small>`;
+    b.onclick=()=>{sel=i;render()};cal.appendChild(b);
+  }
+  let tot=0,td=0;for(let i=0;i<28;i++){const n=exDay(i).length;tot+=n;td+=Math.min(n,Object.values(checks[iso(addDays(start,i))]||{}).filter(Boolean).length)}
+  $('#totalBar').style.width=(td/tot*100)+'%';$('#totalTxt').textContent=`전체 진행 ${td}/${tot} (${Math.round(td/tot*100)}%)`;
+  $('#phase').textContent=`4주 달력 · ${w}주차`;
+  const dd=addDays(start,sel);
+  $('#dayTitle').textContent=`${sel+1}일차 (${dd.getMonth()+1}/${dd.getDate()})`;
+  const dn=list.filter(e=>c[e.id]).length;
+  $('#dayProg').textContent=`${dn}/${list.length} 완료`;
+  $('#dayBar').style.width=(dn/list.length*100)+'%';
+  $('#weekGoal').textContent=WEEK_GOAL[w-1]+(sel<3?' (입문 기간: 6개 동작)':'');
+  const L=$('#list');L.innerHTML='';let last='';
+  list.forEach(e=>{
+    if(e.slot!==last){const h=document.createElement('div');h.className='slot';h.textContent=e.slot;L.appendChild(h);last=e.slot}
+    const el=document.createElement('div');el.className='ex'+(c[e.id]?' done':'')+(allOpen?' open':'');
+    el.innerHTML=`<div class="top"><input type="checkbox" ${c[e.id]?'checked':''}><div class="t"><b>${e.t}${e.gun?'<span class="tag">마사지건</span>':''}</b><span>${e.dose}</span></div></div>
+    <div class="det">
+      <div class="feel"><span class="ok">✔ 정상: ${e.feel[0]}</span><span class="bad">✖ 중단: ${e.feel[1]}</span></div>
+      <ol>${e.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+      <div class="no">⚠ ${e.no}</div>
+      <div class="kw">▶ YouTube 검색 키워드</div>
+      <div class="kws">${e.q.map(q=>`<a class="btn yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔍 ${q}</a>`).join('')}</div>
+      <div class="vid"><input type="text" placeholder="마음에 드는 영상 링크 붙여넣기" value="${esc(vids[e.id]||'')}" data-vid="${e.id}"><button class="ghost" data-setvid="${e.id}">영상 넣기</button></div>
+      ${playerHtml(e.id)}
+      ${e.sec?`<div class="tm"><button onclick="startTimer('${e.t}',${e.sec})">⏱ ${e.sec>=60?Math.round(e.sec/60)+'분':e.sec+'초'} 타이머</button></div>`:''}
+    </div>`;
+    el.querySelector('input[type=checkbox]').onchange=ev=>{(checks[key]=checks[key]||{})[e.id]=ev.target.checked;save();render()};
+    el.querySelector('.t').onclick=()=>el.classList.toggle('open');
+    el.querySelector('[data-setvid]').onclick=()=>{const v=el.querySelector('[data-vid]').value.trim();if(v&&!ytId(v)){alert('YouTube 링크 형식이 아니에요.');return}vids[e.id]=v;store.set('rt_vids',JSON.stringify(vids));render()};
+    const cl=el.querySelector('[data-clear]');if(cl)cl.onclick=()=>{delete vids[e.id];store.set('rt_vids',JSON.stringify(vids));render()};
+    L.appendChild(el);
+  });
+}
+// ---- 타이머 ----
+let tm=null;
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.frequency.value=880;o.connect(a.destination);o.start();setTimeout(()=>o.stop(),300)}catch(e){}}
+function startTimer(name,s){stopTimer();$('#timer').style.display='block';$('#tName').textContent=name;let r=s;const show=()=>{$('#tNum').textContent=r>=60?Math.floor(r/60)+':'+String(r%60).padStart(2,'0'):r};show();
+  tm=setInterval(()=>{r--;show();if(r<=0){clearInterval(tm);tm=null;$('#tNum').textContent='완료';beep()}},1000)}
+function stopTimer(){if(tm)clearInterval(tm);tm=null;$('#timer').style.display='none'}
+$('#reset').onclick=()=>{if(confirm('시작일을 오늘로 바꾸고 체크 기록을 모두 지울까요?')){start=iso(new Date());store.set('rt_start',start);checks={};save();sel=0;render()}};
+$('#tgl').onclick=()=>{allOpen=!allOpen;render()};
+render();
+</script>
+</body>
+</html>
