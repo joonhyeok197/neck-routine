@@ -54,6 +54,27 @@ h1{font-size:22px;margin:0 0 4px}
 .notice{margin-top:16px;background:var(--warn-soft);color:var(--ink);border-radius:10px;padding:12px 14px;font-size:13px}
 .notice b{color:var(--warn)}
 .reset{margin-top:12px;background:none;border:0;color:var(--sub);cursor:pointer;font:inherit;text-decoration:underline}
+body{padding-bottom:120px}
+.tfab{position:fixed;right:16px;bottom:16px;z-index:20;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:600;padding:12px 18px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.timer{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.25);padding:10px 16px}
+.timer[hidden],.tfab[hidden]{display:none}
+.t-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:200px 1fr auto;gap:12px 16px;align-items:center}
+.t-main{display:flex;align-items:baseline;gap:10px}
+.t-main span{font-size:14px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.t-main span.work{background:var(--ok);color:#fff}
+.t-main span.rest{background:var(--warn);color:#fff}
+.t-main b{font-size:34px;font-variant-numeric:tabular-nums;line-height:1}
+.t-set{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--sub)}
+.t-set input[type=number]{width:60px;font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.t-btn{display:flex;gap:6px}
+.t-btn button{font:inherit;font-size:13px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.t-btn #tgo{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+@media (max-width:760px){
+  .t-in{grid-template-columns:1fr auto}
+  .t-set{grid-column:1 / -1;order:3}
+  .t-main b{font-size:28px}
+  body{padding-bottom:170px}
+}
 @media (max-width:760px){
   .tabs{grid-template-columns:repeat(2,1fr)}
   .head{display:none}
@@ -82,6 +103,24 @@ h1{font-size:22px;margin:0 0 4px}
 
   <div class="notice"><b>공통 원칙</b> 통증 없는 범위에서만 합니다. 찌릿함·저림·숨 쉴 때 찌름이 오면 그 동작은 바로 중단하세요. 목을 뒤로 젖히거나 등을 꺾는 동작은 하지 않습니다. 따뜻한 샤워 뒤에 시작하면 더 편합니다.</div>
   <button class="reset" id="reset">오늘 체크 초기화</button>
+</div>
+
+<button class="tfab" id="tfab">⏱ 타이머</button>
+<div class="timer" id="timer" hidden>
+  <div class="t-in">
+    <div class="t-main"><span id="tphase">준비</span><b id="tleft">00:30</b></div>
+    <div class="t-set">
+      <label>운동 <input type="number" id="twork" min="1" max="3600" value="30">초</label>
+      <label>쉬는시간 <input type="number" id="trest" min="1" max="3600" value="10">초</label>
+      <label>세트 <input type="number" id="tsets" min="0" max="99" value="3">회 <small>(0=무한)</small></label>
+      <label><input type="checkbox" id="tsound" checked> 소리</label>
+    </div>
+    <div class="t-btn">
+      <button id="tgo">시작</button>
+      <button id="treset">초기화</button>
+      <button id="tclose">끄기</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -180,6 +219,65 @@ function render(){
 }
 document.getElementById("reset").onclick=()=>{state.done={};save();render();};
 render();
+
+/* 타이머: 운동 → 쉬는시간 → 운동 … 반복. 시작 시 길게 "삐", 쉬는시간 시작 시 짧게 "삐삐" */
+(function(){
+  const $=id=>document.getElementById(id), TK="backtimer_v1";
+  const box=$("timer"), fab=$("tfab"), phaseEl=$("tphase"), leftEl=$("tleft"), goBtn=$("tgo");
+  const work=$("twork"), rest=$("trest"), sets=$("tsets"), snd=$("tsound");
+  try{const s=JSON.parse(localStorage.getItem(TK)||"null"); if(s){work.value=s.w;rest.value=s.r;sets.value=s.n??3;snd.checked=s.s;}}catch(e){}
+  const saveT=()=>{try{localStorage.setItem(TK,JSON.stringify({w:work.value,r:rest.value,n:sets.value,s:snd.checked}))}catch(e){}};
+  const secs=el=>Math.min(3600,Math.max(1,parseInt(el.value)||1));
+  const nset=()=>{const v=parseInt(sets.value);return isNaN(v)?3:Math.min(99,Math.max(0,v));};
+  let cur=1;
+  const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+  let ac=null, ph="idle", endAt=0, remain=0, running=false, timer=null;
+
+  function beep(freq,dur,delay){
+    if(!snd.checked||!ac)return;
+    const t=ac.currentTime+(delay||0), o=ac.createOscillator(), g=ac.createGain();
+    o.type="sine"; o.frequency.value=freq;
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.4,t+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+dur+0.05);
+  }
+  function show(){
+    const n=nset(), name={idle:"준비",work:"운동",rest:"휴식",done:"완료"}[ph];
+    phaseEl.textContent=(ph==="work"||ph==="rest")?name+" "+cur+(n?"/"+n:""):(ph==="idle"?name+" "+(n?n+"세트":"무한"):name); phaseEl.className=ph;
+    const s=running?Math.max(0,Math.ceil((endAt-Date.now())/1000)):Math.ceil(remain/1000);
+    leftEl.textContent=ph==="idle"?fmt(secs(work)):(ph==="done"?"00:00":fmt(s));
+    goBtn.textContent=running?"일시정지":(ph==="idle"?"시작":(ph==="done"?"다시 시작":"계속"));
+  }
+  function begin(p){
+    ph=p; remain=secs(p==="work"?work:rest)*1000; endAt=Date.now()+remain;
+    if(p==="work") beep(880,0.5); else {beep(523,0.18);beep(523,0.18,0.28);}
+  }
+  function tick(){
+    if(Date.now()>=endAt){
+      if(ph==="work"){
+        if(nset()>0&&cur>=nset()){stop();ph="done";remain=0;beep(880,0.2);beep(880,0.2,0.3);beep(1175,0.5,0.6);}
+        else begin("rest");
+      }else{cur++;begin("work");}
+    }
+    show();
+  }
+  function stop(){clearInterval(timer);timer=null;running=false;}
+  goBtn.onclick=()=>{
+    if(!ac){try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+    if(ac&&ac.state==="suspended")ac.resume();
+    if(running){remain=Math.max(0,endAt-Date.now());stop();}
+    else{
+      if(ph==="done")ph="idle";
+      if(ph==="idle"){cur=1;begin("work");} else endAt=Date.now()+remain;
+      running=true; timer=setInterval(tick,200);
+    }
+    show();
+  };
+  $("treset").onclick=()=>{stop();ph="idle";show();};
+  $("tclose").onclick=()=>{stop();ph="idle";box.hidden=true;fab.hidden=false;};
+  fab.onclick=()=>{box.hidden=false;fab.hidden=true;show();};
+  [work,rest,sets,snd].forEach(el=>el.onchange=()=>{saveT();if(ph==="idle")show();});
+  show();
+})();
 </script>
 </body>
 </html>
