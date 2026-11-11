@@ -61,6 +61,8 @@ body{padding-bottom:120px}
 .t-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:200px 1fr auto;gap:12px 16px;align-items:center}
 .t-main{display:flex;align-items:baseline;gap:10px}
 .t-main span{font-size:14px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.t-main span.ready{background:var(--accent);color:#fff}
+.t-set input[type=range]{width:80px;vertical-align:middle;accent-color:var(--accent)}
 .t-main span.work{background:var(--ok);color:#fff}
 .t-main span.rest{background:var(--warn);color:#fff}
 .t-main b{font-size:34px;font-variant-numeric:tabular-nums;line-height:1}
@@ -113,7 +115,10 @@ body{padding-bottom:120px}
       <label>운동 <input type="number" id="twork" min="1" max="3600" value="30">초</label>
       <label>쉬는시간 <input type="number" id="trest" min="1" max="3600" value="10">초</label>
       <label>세트 <input type="number" id="tsets" min="0" max="99" value="3">회 <small>(0=무한)</small></label>
+      <label>준비 <input type="number" id="tready" min="0" max="600" value="5">초</label>
       <label><input type="checkbox" id="tsound" checked> 소리</label>
+      <label>음량 <input type="range" id="tvol" min="0" max="100" value="40"></label>
+      <label>음높이 <input type="range" id="tpitch" min="300" max="1600" step="10" value="880"></label>
     </div>
     <div class="t-btn">
       <button id="tgo">시작</button>
@@ -224,10 +229,11 @@ render();
 (function(){
   const $=id=>document.getElementById(id), TK="backtimer_v1";
   const box=$("timer"), fab=$("tfab"), phaseEl=$("tphase"), leftEl=$("tleft"), goBtn=$("tgo");
-  const work=$("twork"), rest=$("trest"), sets=$("tsets"), snd=$("tsound");
-  try{const s=JSON.parse(localStorage.getItem(TK)||"null"); if(s){work.value=s.w;rest.value=s.r;sets.value=s.n??3;snd.checked=s.s;}}catch(e){}
-  const saveT=()=>{try{localStorage.setItem(TK,JSON.stringify({w:work.value,r:rest.value,n:sets.value,s:snd.checked}))}catch(e){}};
+  const work=$("twork"), rest=$("trest"), sets=$("tsets"), snd=$("tsound"), ready=$("tready"), vol=$("tvol"), pitch=$("tpitch");
+  try{const s=JSON.parse(localStorage.getItem(TK)||"null"); if(s){work.value=s.w;rest.value=s.r;sets.value=s.n??3;snd.checked=s.s;ready.value=s.d??5;vol.value=s.v??40;pitch.value=s.p??880;}}catch(e){}
+  const saveT=()=>{try{localStorage.setItem(TK,JSON.stringify({w:work.value,r:rest.value,n:sets.value,s:snd.checked,d:ready.value,v:vol.value,p:pitch.value}))}catch(e){}};
   const secs=el=>Math.min(3600,Math.max(1,parseInt(el.value)||1));
+  const rdy=()=>{const v=parseInt(ready.value);return isNaN(v)?0:Math.min(600,Math.max(0,v));};
   const nset=()=>{const v=parseInt(sets.value);return isNaN(v)?3:Math.min(99,Math.max(0,v));};
   let cur=1;
   const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
@@ -237,24 +243,28 @@ render();
     if(!snd.checked||!ac)return;
     const t=ac.currentTime+(delay||0), o=ac.createOscillator(), g=ac.createGain();
     o.type="sine"; o.frequency.value=freq;
-    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.4,t+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    const v=Math.max(0.0002,vol.value/100);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(v,t+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
     o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+dur+0.05);
   }
   function show(){
-    const n=nset(), name={idle:"준비",work:"운동",rest:"휴식",done:"완료"}[ph];
+    const n=nset(), name={idle:"대기",ready:"준비",work:"운동",rest:"휴식",done:"완료"}[ph];
     phaseEl.textContent=(ph==="work"||ph==="rest")?name+" "+cur+(n?"/"+n:""):(ph==="idle"?name+" "+(n?n+"세트":"무한"):name); phaseEl.className=ph;
     const s=running?Math.max(0,Math.ceil((endAt-Date.now())/1000)):Math.ceil(remain/1000);
-    leftEl.textContent=ph==="idle"?fmt(secs(work)):(ph==="done"?"00:00":fmt(s));
+    leftEl.textContent=ph==="idle"?fmt(rdy()||secs(work)):(ph==="done"?"00:00":fmt(s));
     goBtn.textContent=running?"일시정지":(ph==="idle"?"시작":(ph==="done"?"다시 시작":"계속"));
   }
   function begin(p){
-    ph=p; remain=secs(p==="work"?work:rest)*1000; endAt=Date.now()+remain;
-    if(p==="work") beep(880,0.5); else {beep(523,0.18);beep(523,0.18,0.28);}
+    const P=+pitch.value;
+    ph=p; remain=(p==="ready"?rdy():secs(p==="work"?work:rest))*1000; endAt=Date.now()+remain;
+    if(p==="work") beep(P,0.5); else if(p==="rest"){beep(P*0.6,0.18);beep(P*0.6,0.18,0.28);}
   }
   function tick(){
     if(Date.now()>=endAt){
-      if(ph==="work"){
-        if(nset()>0&&cur>=nset()){stop();ph="done";remain=0;beep(880,0.2);beep(880,0.2,0.3);beep(1175,0.5,0.6);}
+      if(ph==="ready") begin("work");
+      else if(ph==="work"){
+        const P=+pitch.value;
+        if(nset()>0&&cur>=nset()){stop();ph="done";remain=0;beep(P,0.2);beep(P,0.2,0.3);beep(P*1.33,0.5,0.6);}
         else begin("rest");
       }else{cur++;begin("work");}
     }
@@ -267,7 +277,7 @@ render();
     if(running){remain=Math.max(0,endAt-Date.now());stop();}
     else{
       if(ph==="done")ph="idle";
-      if(ph==="idle"){cur=1;begin("work");} else endAt=Date.now()+remain;
+      if(ph==="idle"){cur=1;begin(rdy()>0?"ready":"work");} else endAt=Date.now()+remain;
       running=true; timer=setInterval(tick,200);
     }
     show();
@@ -275,7 +285,13 @@ render();
   $("treset").onclick=()=>{stop();ph="idle";show();};
   $("tclose").onclick=()=>{stop();ph="idle";box.hidden=true;fab.hidden=false;};
   fab.onclick=()=>{box.hidden=false;fab.hidden=true;show();};
-  [work,rest,sets,snd].forEach(el=>el.onchange=()=>{saveT();if(ph==="idle")show();});
+  [work,rest,sets,snd,ready,vol,pitch].forEach(el=>el.onchange=()=>{saveT();if(ph==="idle")show();});
+  // 음량·음높이를 바꾸면 바로 들어볼 수 있게 시험음 재생
+  [vol,pitch].forEach(el=>el.addEventListener("change",()=>{
+    if(!ac){try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+    if(ac&&ac.state==="suspended")ac.resume();
+    beep(+pitch.value,0.3);
+  }));
   show();
 })();
 </script>
